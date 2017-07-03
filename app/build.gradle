@@ -22,8 +22,6 @@ android {
             buildConfigField("String", "OMDB_API_KEY", "\"" + getOMDBApiKey() + "\"")
         }
         debug {
-            minifyEnabled true
-            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField("String", "TMDB_API_KEY", "\"" + getTMDBApiKey() + "\"")
             buildConfigField("String", "OMDB_API_KEY", "\"" + getOMDBApiKey() + "\"")

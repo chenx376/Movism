@@ -213,16 +213,14 @@ public class MovieDetailActivity extends BaseActivity
             detailGenre.setText(sb.toString().substring(1));
         }
 
-
         tmdbRating.setText(movieDetail.getVoteAverage() + "/10");
-
-        metacriticRating.setText("N/A");
-        imdbRating.setText("N/A");
-        tomatoRating.setText("N/A");
     }
 
     @Override
     public void showExtraRatingData(OMDbMovie omDbMovie) {
+        metacriticRating.setText("N/A");
+        imdbRating.setText("N/A");
+        tomatoRating.setText("N/A");
         for (Rating rating : omDbMovie.getRatings()) {
             String source = rating.getSource();
             String value = rating.getValue();

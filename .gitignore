@@ -7,3 +7,7 @@
 /build
 /captures
 .externalNativeBuild
+# Intellij
+.idea/vcs.xml
+.idea/markdown-navigator.xml
+/secrets.properties

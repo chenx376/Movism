@@ -1,3 +1,31 @@
 <resources>
     <string name="app_name">Movism</string>
+    <string name="trending">POPULAR</string>
+    <string name="theatres">IN THEATERS</string>
+    <string name="upcoming">UPCOMING</string>
+    <string name="details">Details</string>
+    <string name="search_movie_hint">Enter the movie name</string>
+    <string name="banner_image">movie poster</string>
+
+    <string name="more">More</string>
+    <string name="runtime">Runtime:</string>
+    <string name="genre">Genre:</string>
+    <string name="language">Language:</string>
+    <string name="release_date">Release Date:</string>
+    <string name="cast">Cast</string>
+    <string name="crew">Crew</string>
+    <string name="similar_movies">Similar Movies</string>
+    <string name="movies">Movies</string>
+
+
+    <string name="low">Low</string>
+    <string name="high">High</string>
+    <string name="image_quality">Image Quality</string>
+    <string name="license">License</string>
+    <string name="version">Version</string>
+    <string name="about">About</string>
+    <string name="dark">Night Mode</string>
+    <string name="settings">Settings</string>
+
+
 </resources>

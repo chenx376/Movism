@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <PreferenceCategory android:title="Configuration">
+
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="night_mode"
+            android:title="@string/dark" />
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="image_quality"
+            android:summaryOff="@string/low"
+            android:summaryOn="@string/high"
+            android:title="@string/image_quality" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Information">
+
+
+        <Preference
+            android:enabled="true"
+            android:key="license"
+            android:selectable="true"
+            android:summary=""
+            android:title="@string/license" />
+
+        <Preference
+            android:enabled="true"
+            android:key="about"
+            android:selectable="true"
+            android:title="@string/about" />
+
+        <Preference
+            android:enabled="true"
+            android:key="version"
+            android:selectable="true"
+            android:summary="1.0.0"
+            android:title="@string/version" />
+    </PreferenceCategory>
+
+
+</PreferenceScreen>

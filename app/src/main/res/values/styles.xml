@@ -1,11 +1,37 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.DayNight">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
     </style>
+
+    <style name="AppTheme" parent="AppTheme.NoActionBar">
+
+    </style>
+
+    <style name="MaterialSearchViewStyle" parent="AppTheme">
+        <!-- Background for the search bar -->
+        <!--<item name="searchBackground">@android:color/white</item>-->
+        <!-- Change voice icon -->
+        <item name="searchVoiceIcon">@drawable/ic_action_voice_search</item>
+        <!-- Change clear text icon -->
+        <item name="searchCloseIcon">@drawable/ic_action_navigation_close</item>
+        <!-- Change up icon -->
+        <item name="searchBackIcon">@drawable/ic_action_navigation_arrow_back</item>
+        <!-- Change icon for the suggestions -->
+        <item name="searchSuggestionIcon">@drawable/ic_suggestion</item>
+        <!-- Change background for the suggestions list view -->
+        <!--<item name="searchSuggestionBackground">@android:color/white</item>-->
+
+        <!--&lt;!&ndash; Change text color for edit text. This will also be the color of the cursor &ndash;&gt;-->
+        <!--<item name="android:textColor">@color/theme_primary_text_inverted</item>-->
+
+        <!--&lt;!&ndash; Change hint text color for edit text &ndash;&gt;-->
+        <!--<item name="android:textColorHint">@color/theme_secondary_text_inverted</item>-->
+
+        <!-- Hint for edit text -->
+        <item name="android:hint">@string/search_movie_hint</item>
+    </style>
+
 
 </resources>

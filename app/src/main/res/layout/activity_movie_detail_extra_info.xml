@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/movie_extra_detail"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/runtime_holder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/runtime"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/detail_runtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/runtime_holder"
+            android:layout_marginLeft="8dp"
+            android:layout_toEndOf="@id/runtime_holder"
+            android:layout_toRightOf="@id/runtime_holder"
+            android:fontFamily="sans-serif-condensed"
+            android:text=""
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/genre_holder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/runtime_holder"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/genre"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/detail_genre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/genre_holder"
+            android:layout_below="@id/detail_runtime"
+            android:layout_marginLeft="8dp"
+            android:layout_toEndOf="@id/genre_holder"
+            android:layout_toRightOf="@id/genre_holder"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-condensed"
+            android:maxLines="1"
+            android:text=""
+            android:textSize="14sp" />
+
+
+        <TextView
+            android:id="@+id/language_holder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detail_genre"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/language"
+            android:textSize="16sp" />
+
+        <TextView
+
+            android:id="@+id/detail_language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/language_holder"
+            android:layout_below="@id/detail_genre"
+            android:layout_marginLeft="8dp"
+            android:layout_toEndOf="@id/language_holder"
+            android:layout_toRightOf="@id/language_holder"
+            android:fontFamily="sans-serif-condensed"
+            android:text=""
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/release_holder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/language_holder"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@string/release_date"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:id="@+id/detail_released"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/release_holder"
+            android:layout_below="@id/detail_language"
+            android:layout_marginLeft="8dp"
+            android:layout_toEndOf="@id/release_holder"
+            android:layout_toRightOf="@id/release_holder"
+            android:fontFamily="sans-serif-condensed"
+            android:text=""
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

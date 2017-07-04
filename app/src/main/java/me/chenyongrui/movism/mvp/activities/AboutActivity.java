@@ -47,15 +47,14 @@ public class AboutActivity extends BaseActivity {
                 .setCover(R.mipmap.profile_cover)
                 .setName("Yongrui CHEN")
                 .setSubTitle("Software Developer")
-                .setBrief("I'm warmed of Software technologies. Ideas maker, curious and nature lover.")
+                .setBrief("I'm warmed of software technologies. Ideas maker, quick learner, curious and nature lover.")
                 .addWebsiteLink("http://chenyongrui.me")
                 .addEmailLink("yongrui.chen@outlook.com")
                 .addGitHubLink("ChenYongrui")
                 .addFacebookLink("chenyongrui94")
-                .addLinkedInLink("yongrui-chen-278070a3")
+                .addLinkedInLink("yongrui-chen")
                 .setAppIcon(R.mipmap.ic_launcher)
                 .setAppName(R.string.app_name)
-                .addGooglePlayStoreLink("123")
                 .addFiveStarsAction()
 //                .setVersionNameAsAppSubTitle()
                 .addShareAction(R.string.app_name)
@@ -64,7 +63,6 @@ public class AboutActivity extends BaseActivity {
                 .setLinksAnimated(true)
                 .setShowAsCard(true)
                 .build();
-
 
         aboutContainer.addView(view);
     }

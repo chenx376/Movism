@@ -41,5 +41,8 @@
   public *;
 }
 
-## for DexGuard only
+# for DexGuard only
 #-keepresourcexmlelements manifest/application/meta-data@value=GlideModule
+
+-dontwarn rx.internal.**
+-dontwarn retrofit2.**

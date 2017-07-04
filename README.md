@@ -4,18 +4,20 @@ A Material Designed Movie App based on MVP + Retrofit + RxJava
 
 ### About
 
-This App is mainly wrote for Learning and Practice,  Any contributions are very welcomed !
+This App is mainly built for learning and practice, any contributions are very welcomed !
 
-Based on MVP architectural pattern, this app is organized in a clear
- structure. Every view(activity and fragment) has its own presenter.
- By using Dependency Injection, every presenter has the reference of
- its view and vise versa. Besides DI is also used for the
- Internet Service, this makes each part of the application decouple
+Based on MVP architectural pattern, this app is organized in clear
+ structure. With the help of Dependency Injection, every presenter has the reference of
+ its view(activity and fragment) and vise versa. Also DI is used for the
+ Internet Service, SharePreference, ToastUtil and so on. This helps each part of the application decouple
  from  the others, which improve the extensibility and  maintainability.
  For more information, please refer to the source code.
 
 ### Demo App
-![app_icon](./app/src/main/res/mipmap-xxhdpi/ic_launcher.png)
+<img src="./app/src/main/res/mipmap-xxhdpi/ic_launcher.png"/>
+<br/>
+<img src="./app/src/main/res/drawable/powered.png"  width="150" height="60">
+
 -  You can check it out already compiled at
 [Google Play](https://play.google.com/store/apps/details?id=me.chenyongrui.movism)
 - You can clone the project and compile it yourself, however you need to

@@ -1,16 +1,6 @@
 # Movism
 
-A Material Designed Movie App based MVP + Retrofit + RxJava
-
-![app_icon](./app/src/main/res/mipmap-xxhdpi/ic_launcher.png)
-
-
-### Demo App
--  You can check it out already compiled at
-[Google Play](https://play.google.com/store/apps/details?id=me.chenyongrui.movism)
-- You can clone the project and compile it yourself, however you need to
- provide your own API keys in your local machine
-
+A Material Designed Movie App based on MVP + Retrofit + RxJava
 
 ### About
 
@@ -23,6 +13,13 @@ Based on MVP architectural pattern, this app is organized in a clear
  Internet Service, this makes each part of the application decouple
  from  the others, which improve the extensibility and  maintainability.
  For more information, please refer to the source code.
+
+### Demo App
+![app_icon](./app/src/main/res/mipmap-xxhdpi/ic_launcher.png)
+-  You can check it out already compiled at
+[Google Play](https://play.google.com/store/apps/details?id=me.chenyongrui.movism)
+- You can clone the project and compile it yourself, however you need to
+ provide your own API keys in your local machine
 
 
 ## Thanks

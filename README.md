@@ -15,7 +15,6 @@ Based on MVP architectural pattern, this app is organized in clear
 
 ### Demo App
 <img src="./app/src/main/res/mipmap-xxhdpi/ic_launcher.png"/>
-<br/>
 <img src="./app/src/main/res/drawable/powered.png"  width="150" height="60">
 
 -  You can check it out already compiled at

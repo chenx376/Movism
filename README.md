@@ -2,7 +2,7 @@
 
 A Material Designed Movie App based MVP + Retrofit + RxJava
 
-![](./app/src/main/res/mipmap-xxhdpi/ic_launcher.png)
+![app_icon](./app/src/main/res/mipmap-xxhdpi/ic_launcher.png)
 
 
 ### Demo App
@@ -39,17 +39,15 @@ Based on MVP architectural pattern, this app is organized in a clear
 - Material Design Library from [Google](https://developer.android.google.cn/index.html)
 
 ## Screens
-<img src="./image/screen1.png"  width="200" height="352">
-<img src="./image/screen2.png"  width="200"  height="352">
-<img src="./image/screen3.png"  width="200"  height="352">
-<br><br>
-<img src="./image/screen4.png"  width="200"  height="352">
-<img src="./image/screen5.png"  width="200"  height="352">
-<img src="./image/screen6.png"  width="200"  height="352">
-<br><br>
-<img src="./image/screen7.png"  width="200"  height="352">
-<img src="./image/screen8.png"  width="200"   height="352">
-<img src="./image/screen9.png"  width="200"   height="352">
+<img src="./image/screen1.png" vspace="5" align= "left" width="200" height="352">
+<img src="./image/screen2.png" vspace="5" align= "left"  width="200"  height="352">
+<img src="./image/screen3.png"  vspace="5"    width="200"  height="352">
+<img src="./image/screen4.png" vspace="5" align= "left" width="200"  height="352">
+<img src="./image/screen5.png" vspace="5" align= "left" width="200"  height="352">
+<img src="./image/screen6.png" vspace="5"   width="200"  height="352">
+<img src="./image/screen7.png" vspace="5" align= "left" width="200"  height="352">
+<img src="./image/screen8.png" vspace="5" align= "left" width="200"   height="352">
+<img src="./image/screen9.png" vspace="5"   width="200"   height="352">
 
 
 

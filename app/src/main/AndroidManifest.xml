@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".mvp.activities.MainActivity"
+            android:name=".mvp.view.activities.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,33 +21,33 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".mvp.activities.MovieDetailActivity"
+            android:name=".mvp.view.activities.MovieDetailActivity"
             android:screenOrientation="portrait">
 
         </activity>
 
         <activity
-            android:name=".mvp.activities.FullImageActivity"
+            android:name=".mvp.view.activities.FullImageActivity"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".mvp.activities.CrewListActivity"
+            android:name=".mvp.view.activities.CrewListActivity"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".mvp.activities.CastListActivity"
+            android:name=".mvp.view.activities.CastListActivity"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".mvp.activities.ProfileActivity"
+            android:name=".mvp.view.activities.ProfileActivity"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".mvp.activities.SettingsActivity"
+            android:name=".mvp.view.activities.SettingsActivity"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".mvp.activities.LicenseActivity"
+            android:name=".mvp.view.activities.LicenseActivity"
             android:screenOrientation="portrait">
 
         </activity>
         <activity
-            android:name=".mvp.activities.AboutActivity"
+            android:name=".mvp.view.activities.AboutActivity"
             android:screenOrientation="portrait"></activity>
     </application>
 

@@ -12,11 +12,11 @@ import me.chenyongrui.movism.di.module.MovieListModule;
 import me.chenyongrui.movism.di.module.OMDbAPIModule;
 import me.chenyongrui.movism.di.module.ProfileModule;
 import me.chenyongrui.movism.di.module.TMDbAPIModule;
-import me.chenyongrui.movism.mvp.activities.AboutActivity;
-import me.chenyongrui.movism.mvp.activities.FullImageActivity;
-import me.chenyongrui.movism.mvp.activities.LicenseActivity;
-import me.chenyongrui.movism.mvp.activities.MainActivity;
-import me.chenyongrui.movism.mvp.activities.SettingsActivity;
+import me.chenyongrui.movism.mvp.view.activities.AboutActivity;
+import me.chenyongrui.movism.mvp.view.activities.FullImageActivity;
+import me.chenyongrui.movism.mvp.view.activities.LicenseActivity;
+import me.chenyongrui.movism.mvp.view.activities.MainActivity;
+import me.chenyongrui.movism.mvp.view.activities.SettingsActivity;
 
 @Singleton
 @Component(modules = {AppModule.class, OMDbAPIModule.class, TMDbAPIModule.class})

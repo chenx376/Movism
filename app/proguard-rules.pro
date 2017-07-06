@@ -41,8 +41,10 @@
   public *;
 }
 
+-dontwarn com.malinskiy.superrecyclerview.SwipeDismissRecyclerViewTouchListener*
+
 # for DexGuard only
 #-keepresourcexmlelements manifest/application/meta-data@value=GlideModule
 
--dontwarn rx.internal.**
--dontwarn retrofit2.**
+-dontwarn rx.internal.util.unsafe.**
+-dontwarn retrofit2.*

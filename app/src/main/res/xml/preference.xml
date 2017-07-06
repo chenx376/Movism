@@ -38,7 +38,6 @@
             android:enabled="true"
             android:key="version"
             android:selectable="true"
-            android:summary="1.0.0"
             android:title="@string/version" />
     </PreferenceCategory>
 

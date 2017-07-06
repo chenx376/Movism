@@ -1,11 +1,93 @@
 package me.chenyongrui.movism.mvp.presenters;
 
+import javax.inject.Inject;
 
-public interface MovieListPresenter {
+import me.chenyongrui.movism.mvp.model.tmdb.TMDbMovieList;
+import me.chenyongrui.movism.mvp.view.fragment.MovieListFragment;
+import me.chenyongrui.movism.repository.MovieListRepository;
+import rx.Observer;
+import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
-    void presentMovieListData(int movieListType, int page);
 
-    void unsubscribeRx();
+public class MovieListPresenter {
 
-     void presentSearchedResult(String query, int page);
+    private final MovieListFragment view;
+
+    private Subscription subscription = null;
+
+    private MovieListRepository repository;
+
+
+    @Inject
+    public MovieListPresenter(MovieListFragment view, MovieListRepository repository) {
+        this.view = view;
+        this.repository = repository;
+    }
+
+
+    public void presentMovieListData(int movieListType, int page) {
+        subscription = repository
+                .getMovieListData(movieListType, page)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<TMDbMovieList>() {
+                    @Override
+                    public void onCompleted() {
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        e.printStackTrace();
+                    }
+
+                    @Override
+                    public void onNext(TMDbMovieList movieList) {
+                        if (view != null) {
+                            view.updateMovieListData(movieList);
+                            if (movieList.getPage() == movieList.getTotalPages()) {
+                                view.onNoMoreData();
+                            }
+                        }
+                    }
+                });
+    }
+
+
+    public void presentSearchedResult(String query, int page) {
+        subscription = repository
+                .getSearchedListData(query, page)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<TMDbMovieList>() {
+                    @Override
+                    public void onCompleted() {
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        e.printStackTrace();
+                    }
+
+                    @Override
+                    public void onNext(TMDbMovieList movieList) {
+                        if (view != null) {
+                            view.updateMovieListData(movieList);
+                            if (movieList.getPage() == movieList.getTotalPages()) {
+                                view.onNoMoreData();
+                            }
+                        }
+                    }
+                });
+
+    }
+
+    public void unsubscribeRx() {
+        if (subscription != null) {
+            if (!subscription.isUnsubscribed()) {
+                subscription.unsubscribe();
+            }
+        }
+    }
 }

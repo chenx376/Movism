@@ -1,7 +1,7 @@
 package me.chenyongrui.movism.network;
 
-import me.chenyongrui.movism.mvp.model.tmdb.Casts;
-import me.chenyongrui.movism.mvp.model.tmdb.MovieCredits;
+import me.chenyongrui.movism.mvp.model.tmdb.CastsData;
+import me.chenyongrui.movism.mvp.model.tmdb.MovieCreditsData;
 import me.chenyongrui.movism.mvp.model.tmdb.Profile;
 import me.chenyongrui.movism.mvp.model.tmdb.TMDbMovieDetail;
 import me.chenyongrui.movism.mvp.model.tmdb.TMDbMovieList;
@@ -12,8 +12,8 @@ import rx.Observable;
 
 public interface TMDbService {
 
-    @GET("movie/top_rated")
-    Observable<TMDbMovieList> getPopularMovies(@Query("page") Integer page);
+    @GET("movie/top_rated?sort_by=popularity.desc")
+    Observable<TMDbMovieList> getTopRatedMovies(@Query("page") Integer page);
 
     @GET("movie/upcoming")
     Observable<TMDbMovieList> getUpComingMovies(@Query("page") Integer page);
@@ -21,13 +21,13 @@ public interface TMDbService {
     @GET("movie/now_playing")
     Observable<TMDbMovieList> getInTheaterMovies(@Query("page") Integer page);
 
-    @GET("search/movie")
+    @GET("search/movie?sort_by=popularity.desc")
     Observable<TMDbMovieList> searchMovies(@Query("query") String query, @Query("page") Integer page);
 
     @GET("movie/{id}/casts")
-    Observable<Casts> getMovieCasts(@Path("id") String id);
+    Observable<CastsData> getCastsData(@Path("id") String id);
 
-    @GET("movie/{id}/similar")
+    @GET("movie/{id}/similar?sort_by=popularity.desc")
     Observable<TMDbMovieList> getSimilarMovies(@Path("id") String id);
 
     @GET("movie/{id}")
@@ -36,6 +36,6 @@ public interface TMDbService {
     @GET("person/{id}")
     Observable<Profile> getProfile(@Path("id") String id);
 
-    @GET("person/{id}/movie_credits")
-    Observable<MovieCredits> getMovieCredits(@Path("id") String id);
+    @GET("person/{id}/movie_credits?sort_by=popularity.desc")
+    Observable<MovieCreditsData> getMovieCreditsData(@Path("id") String id);
 }

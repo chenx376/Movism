@@ -1,243 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:wheel="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/movie_all_details_container"
+    android:id="@+id/movie_detail_container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
-    <ScrollView
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="250dp"
 
+        android:fitsSystemWindows="true">
 
-        <RelativeLayout
-            android:id="@+id/movie_main_info_container"
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsing_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:collapsedTitleTextAppearance="?attr/colorPrimaryDark"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleMarginEnd="64dp"
+            app:expandedTitleMarginStart="48dp"
 
-            <FrameLayout
-                android:id="@+id/movie_backdrop"
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:background="?attr/colorPrimaryDark"
-                android:clickable="true"
-                android:foreground="?android:selectableItemBackground">
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:statusBarScrim="@android:color/transparent">
 
-                <ImageView
-                    android:id="@+id/backdrop"
-                    android:layout_width="match_parent"
-                    android:layout_height="250dp"
-                    android:contentDescription="@string/banner_image"
-                    android:scaleType="centerCrop" />
-
-
-                <com.pnikosis.materialishprogress.ProgressWheel
-                    android:id="@+id/progress_wheel"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_gravity="center"
-                    android:visibility="visible"
-                    wheel:matProg_barColor="?attr/colorPrimary"
-                    wheel:matProg_progressIndeterminate="true" />
-
-            </FrameLayout>
-
-            <FrameLayout
-                android:id="@+id/header_container"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/movie_backdrop"
-                android:clickable="true"
-                android:foreground="?android:selectableItemBackground">
-
-                <LinearLayout
-                    android:id="@+id/header"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:id="@+id/detail_title"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-condensed"
-                        android:textAppearance="?android:textAppearanceLarge" />
-
-                    <TextView
-                        android:id="@+id/detail_tagline"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-condensed"
-                        android:textAppearance="?android:textAppearanceMedium"
-                        android:visibility="gone" />
-
-
-                    <TextView
-                        android:id="@+id/detail_overview"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:ellipsize="end"
-                        android:fontFamily="sans-serif-condensed"
-                        android:maxLines="4"
-                        android:textAppearance="?android:textAppearanceSmall" />
-
-                </LinearLayout>
-            </FrameLayout>
-
-            <LinearLayout
-                android:id="@+id/movie_description"
+            <ImageView
+                android:id="@+id/backdrop"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/header_container"
-                android:orientation="vertical">
-
-                <include layout="@layout/activity_movie_detail_extra_info" />
-
-                <include layout="@layout/activity_movie_detail_ratings" />
-
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="?attr/colorPrimaryDark" />
-
-            </LinearLayout>
+                android:background="?attr/colorPrimary"
+                android:clickable="true"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop"
+                app:layout_collapseMode="parallax" />
 
 
-            <android.support.v7.widget.CardView
-                android:id="@+id/cast_layout"
+            <com.pnikosis.materialishprogress.ProgressWheel
+                android:id="@+id/progress_wheel"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center"
+                android:visibility="visible"
+                wheel:matProg_barColor="?attr/colorAccent"
+                wheel:matProg_progressIndeterminate="true" />
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/movie_description"
-                app:cardCornerRadius="0dp">
+                android:layout_height="?android:attr/actionBarSize"
+                app:layout_collapseMode="pin" />
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/cast_bar"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentTop="true"
-                        android:fontFamily="sans-serif-condensed"
-                        android:padding="16dp"
-                        android:text="@string/cast"
-                        android:textAppearance="?android:textAppearanceMedium"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/cast_more"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:background="?android:selectableItemBackground"
-                        android:fontFamily="sans-serif-condensed"
-                        android:padding="16dp"
-                        android:text="@string/more"
-                        android:textAppearance="?android:textAppearanceMedium"
-                        android:textStyle="bold"
-                        android:visibility="invisible" />
-
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/cast_recycler"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/cast_bar"
-                        android:visibility="invisible" />
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/crew_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/cast_layout"
-                app:cardCornerRadius="0dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/crew_bar"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-condensed"
-                        android:padding="16dp"
-                        android:text="@string/crew"
-                        android:textAppearance="?android:textAppearanceMedium"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/crew_more"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:background="?android:selectableItemBackground"
-                        android:fontFamily="sans-serif-condensed"
-                        android:padding="16dp"
-                        android:text="@string/more"
-                        android:textAppearance="?android:textAppearanceMedium"
-                        android:textStyle="bold"
-                        android:visibility="invisible" />
-
-
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/crew_recycler"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/crew_bar"
-                        android:visibility="invisible" />
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
-
-            <android.support.v7.widget.CardView
-                android:id="@+id/similar_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/crew_layout"
-                app:cardCornerRadius="0dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/similar_movie_bar"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-condensed"
-                        android:padding="16dp"
-                        android:text="@string/similar_movies"
-                        android:textAppearance="?android:textAppearanceMedium"
-                        android:textStyle="bold" />
-
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/similar_recycler"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/similar_movie_bar"
-                        android:visibility="invisible" />
-                </RelativeLayout>
-            </android.support.v7.widget.CardView>
-
-
-        </RelativeLayout>
-
-    </ScrollView>
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/toolbar_margin"
-        android:background="@android:color/transparent" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
 
-</FrameLayout>
+            <include layout="@layout/activity_movie_detail_header" />
+
+            <include layout="@layout/activity_movie_detail_ratings" />
+
+            <include layout="@layout/activity_movie_detail_extra_info" />
+
+
+            <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:background="?attr/colorPrimary" />-->
+
+
+            <include layout="@layout/activity_movie_detail_three_recycler_list" />
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

@@ -412,7 +412,7 @@ public class MovieDetailActivity extends BaseActivity implements OmniAdapter.Ite
                                             collapsingToolbar.setCollapsedTitleTextColor(swatch.getTitleTextColor());
                                             collapsingToolbar.setContentScrimColor(swatch.getRgb());
 
-                                            final Drawable arrow = ContextCompat.getDrawable(getBaseContext(), R.drawable.abc_ic_ab_back_material);
+                                            final Drawable arrow = ContextCompat.getDrawable(getBaseContext(), R.drawable.ic_arrow_back);
                                             arrow.setColorFilter(swatch.getTitleTextColor(), PorterDuff.Mode.SRC_ATOP);
                                             getSupportActionBar().setHomeAsUpIndicator(arrow);
 

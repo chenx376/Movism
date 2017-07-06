@@ -9,8 +9,8 @@ android {
         applicationId "me.chenyongrui.movism"
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode 3
-        versionName "1.1.0"
+        versionCode 5
+        versionName "1.1.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 //        jackOptions {
 //            enabled true

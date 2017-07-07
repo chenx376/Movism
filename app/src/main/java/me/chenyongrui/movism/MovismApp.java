@@ -6,10 +6,7 @@ import android.support.v7.app.AppCompatDelegate;
 
 import javax.inject.Inject;
 
-import me.chenyongrui.movism.di.component.AppComponent;
-import me.chenyongrui.movism.di.component.DaggerAppComponent;
-import me.chenyongrui.movism.di.module.AppModule;
-import me.chenyongrui.movism.util.Constant;
+import me.chenyongrui.movism.utils.Constant;
 
 
 public class MovismApp extends Application {

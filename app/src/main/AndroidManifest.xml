@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".mvp.view.activities.MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,33 +21,33 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".mvp.view.activities.MovieDetailActivity"
+            android:name=".ui.activity.MovieDetailActivity"
             android:screenOrientation="portrait">
 
         </activity>
 
         <activity
-            android:name=".mvp.view.activities.FullImageActivity"
+            android:name=".ui.activity.FullImageActivity"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".mvp.view.activities.CrewListActivity"
+            android:name=".ui.activity.CrewListActivity"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".mvp.view.activities.CastListActivity"
+            android:name=".ui.activity.CastListActivity"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".mvp.view.activities.ProfileActivity"
+            android:name=".ui.activity.ProfileActivity"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".mvp.view.activities.SettingsActivity"
+            android:name=".ui.activity.SettingsActivity"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".mvp.view.activities.LicenseActivity"
+            android:name=".ui.activity.LicenseActivity"
             android:screenOrientation="portrait">
 
         </activity>
         <activity
-            android:name=".mvp.view.activities.AboutActivity"
+            android:name=".ui.activity.AboutActivity"
             android:screenOrientation="portrait"></activity>
     </application>
 

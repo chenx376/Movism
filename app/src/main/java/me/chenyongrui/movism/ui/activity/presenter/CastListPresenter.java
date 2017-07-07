@@ -2,9 +2,9 @@ package me.chenyongrui.movism.ui.activity.presenter;
 
 import javax.inject.Inject;
 
-import me.chenyongrui.movism.ui.activity.CastListActivity;
 import me.chenyongrui.movism.data.api.model.tmdb.CastsData;
 import me.chenyongrui.movism.data.repository.CastCrewRepository;
+import me.chenyongrui.movism.ui.activity.CastListActivity;
 import rx.Observer;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
@@ -16,6 +16,7 @@ public class CastListPresenter {
     private final CastListActivity view;
 
     private Subscription subscription = null;
+    
     private CastCrewRepository castCrewRepository;
 
     @Inject

@@ -5,7 +5,10 @@
     android:layout_height="wrap_content"
     android:gravity="center"
     android:orientation="horizontal"
-    android:padding="25dp">
+    android:paddingBottom="20dp"
+    android:paddingLeft="25dp"
+    android:paddingRight="25dp"
+    android:paddingTop="20dp">
 
 
     <LinearLayout
@@ -27,9 +30,11 @@
             android:id="@+id/imdb_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:layout_marginLeft="8dp"
-            android:text="N/A" />
+
+            android:maxLines="1"
+            android:text="N/A"
+            android:textSize="12sp" />
 
     </LinearLayout>
 
@@ -54,7 +59,10 @@
             android:layout_height="wrap_content"
 
             android:layout_marginLeft="8dp"
-            android:text="N/A" />
+            android:maxLines="1"
+
+            android:text="N/A"
+            android:textSize="12sp" />
 
     </LinearLayout>
 
@@ -76,9 +84,11 @@
             android:id="@+id/metacritic_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:layout_marginLeft="8dp"
-            android:text="N/A" />
+            android:maxLines="1"
+            android:text="N/A"
+
+            android:textSize="12sp" />
 
     </LinearLayout>
 
@@ -101,9 +111,11 @@
             android:id="@+id/tmdb_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:layout_marginLeft="8dp"
-            android:text="N/A" />
+
+            android:maxLines="1"
+            android:text="N/A"
+            android:textSize="12sp" />
 
     </LinearLayout>
 

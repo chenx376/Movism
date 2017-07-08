@@ -1,4 +1,4 @@
-package me.chenyongrui.movism.ui.activity.CrewList;
+package me.chenyongrui.movism.ui.activity.crewlist;
 
 
 import dagger.Subcomponent;

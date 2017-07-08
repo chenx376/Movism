@@ -1,4 +1,4 @@
-package me.chenyongrui.movism.ui.activity.MovieDetail;
+package me.chenyongrui.movism.ui.activity.moviedetail;
 
 
 import javax.inject.Named;

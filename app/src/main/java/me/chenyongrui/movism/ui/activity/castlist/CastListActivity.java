@@ -1,4 +1,4 @@
-package me.chenyongrui.movism.ui.activity.CastList;
+package me.chenyongrui.movism.ui.activity.castlist;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,7 +16,7 @@ import me.chenyongrui.movism.R;
 import me.chenyongrui.movism.AppComponent;
 import me.chenyongrui.movism.ui.activity.BaseActivity;
 import me.chenyongrui.movism.data.api.model.tmdb.Cast;
-import me.chenyongrui.movism.ui.activity.Profile.ProfileActivity;
+import me.chenyongrui.movism.ui.activity.profile.ProfileActivity;
 import me.chenyongrui.movism.ui.adapters.OmniAdapter;
 import me.chenyongrui.movism.ui.adapters.viewholder.CastViewHolder;
 

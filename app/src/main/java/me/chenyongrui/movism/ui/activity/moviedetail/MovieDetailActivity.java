@@ -1,4 +1,4 @@
-package me.chenyongrui.movism.ui.activity.MovieDetail;
+package me.chenyongrui.movism.ui.activity.moviedetail;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -46,10 +46,10 @@ import me.chenyongrui.movism.data.api.model.tmdb.TMDbMovie;
 import me.chenyongrui.movism.data.api.model.tmdb.TMDbMovieDetail;
 import me.chenyongrui.movism.data.api.model.tmdb.TMDbMovieList;
 import me.chenyongrui.movism.ui.activity.BaseActivity;
-import me.chenyongrui.movism.ui.activity.CastList.CastListActivity;
-import me.chenyongrui.movism.ui.activity.CrewList.CrewListActivity;
+import me.chenyongrui.movism.ui.activity.castlist.CastListActivity;
+import me.chenyongrui.movism.ui.activity.crewlist.CrewListActivity;
 import me.chenyongrui.movism.ui.activity.FullImageActivity;
-import me.chenyongrui.movism.ui.activity.Profile.ProfileActivity;
+import me.chenyongrui.movism.ui.activity.profile.ProfileActivity;
 import me.chenyongrui.movism.ui.adapters.OmniAdapter;
 import me.chenyongrui.movism.ui.adapters.viewholder.CastViewHolder;
 import me.chenyongrui.movism.ui.adapters.viewholder.CrewViewHolder;

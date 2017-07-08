@@ -1,4 +1,4 @@
-package me.chenyongrui.movism.ui.fragment.MovieList;
+package me.chenyongrui.movism.ui.fragment.movielist;
 
 
 import dagger.Subcomponent;

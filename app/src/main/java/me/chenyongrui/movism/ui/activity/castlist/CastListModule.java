@@ -1,4 +1,4 @@
-package me.chenyongrui.movism.ui.activity.CastList;
+package me.chenyongrui.movism.ui.activity.castlist;
 
 
 import javax.inject.Named;

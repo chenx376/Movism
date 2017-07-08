@@ -22,7 +22,7 @@ import butterknife.ButterKnife;
 import me.chenyongrui.movism.R;
 import me.chenyongrui.movism.AppComponent;
 import me.chenyongrui.movism.ui.adapters.MainActivityPagerAdapter;
-import me.chenyongrui.movism.ui.fragment.MovieList.MovieListFragment;
+import me.chenyongrui.movism.ui.fragment.movielist.MovieListFragment;
 
 public class MainActivity extends BaseActivity {
     @BindView(R.id.toolbar)

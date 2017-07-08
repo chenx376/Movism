@@ -1,4 +1,4 @@
-package me.chenyongrui.movism.ui.activity.Profile;
+package me.chenyongrui.movism.ui.activity.profile;
 
 
 import dagger.Module;

@@ -1,4 +1,4 @@
-package me.chenyongrui.movism.ui.activity;
+package me.chenyongrui.movism.ui.activity.MovieDetail;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -33,9 +33,8 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import me.chenyongrui.movism.R;
 import me.chenyongrui.movism.AppComponent;
-import me.chenyongrui.movism.ui.activity.module.MovieDetailModule;
+import me.chenyongrui.movism.R;
 import me.chenyongrui.movism.data.api.model.omdb.OMDbMovie;
 import me.chenyongrui.movism.data.api.model.omdb.Rating;
 import me.chenyongrui.movism.data.api.model.tmdb.Cast;
@@ -46,7 +45,11 @@ import me.chenyongrui.movism.data.api.model.tmdb.ProductionCountry;
 import me.chenyongrui.movism.data.api.model.tmdb.TMDbMovie;
 import me.chenyongrui.movism.data.api.model.tmdb.TMDbMovieDetail;
 import me.chenyongrui.movism.data.api.model.tmdb.TMDbMovieList;
-import me.chenyongrui.movism.ui.activity.presenter.MovieDetailPresenter;
+import me.chenyongrui.movism.ui.activity.BaseActivity;
+import me.chenyongrui.movism.ui.activity.CastList.CastListActivity;
+import me.chenyongrui.movism.ui.activity.CrewList.CrewListActivity;
+import me.chenyongrui.movism.ui.activity.FullImageActivity;
+import me.chenyongrui.movism.ui.activity.Profile.ProfileActivity;
 import me.chenyongrui.movism.ui.adapters.OmniAdapter;
 import me.chenyongrui.movism.ui.adapters.viewholder.CastViewHolder;
 import me.chenyongrui.movism.ui.adapters.viewholder.CrewViewHolder;
@@ -413,7 +416,7 @@ public class MovieDetailActivity extends BaseActivity implements OmniAdapter.Ite
                                             collapsingToolbar.setContentScrimColor(swatch.getRgb());
 
                                             final Drawable arrow = ContextCompat.getDrawable(getBaseContext(), R.drawable.ic_arrow_back);
-                                            arrow.setColorFilter(swatch.getTitleTextColor(), PorterDuff.Mode.SRC_ATOP);
+                                            arrow.mutate().setColorFilter(swatch.getTitleTextColor(), PorterDuff.Mode.SRC_IN);
                                             getSupportActionBar().setHomeAsUpIndicator(arrow);
 
                                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

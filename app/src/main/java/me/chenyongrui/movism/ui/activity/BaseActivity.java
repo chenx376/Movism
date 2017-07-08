@@ -7,8 +7,8 @@ import android.view.MenuItem;
 
 import javax.inject.Inject;
 
-import me.chenyongrui.movism.MovismApp;
 import me.chenyongrui.movism.AppComponent;
+import me.chenyongrui.movism.MovismApp;
 import me.chenyongrui.movism.utils.Constant;
 import me.chenyongrui.movism.utils.ToastUtil;
 
@@ -18,7 +18,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Inject
     ToastUtil toastUtil;
 
-    boolean isNightMode = Constant.isNightMode;
+    public boolean isNightMode = Constant.isNightMode;
 
     protected abstract void injectDependencies(AppComponent appComponent);
 

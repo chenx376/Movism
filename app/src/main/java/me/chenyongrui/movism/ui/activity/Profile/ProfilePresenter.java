@@ -1,8 +1,7 @@
-package me.chenyongrui.movism.ui.activity.presenter;
+package me.chenyongrui.movism.ui.activity.Profile;
 
 import javax.inject.Inject;
 
-import me.chenyongrui.movism.ui.activity.ProfileActivity;
 import me.chenyongrui.movism.data.api.model.tmdb.MovieCreditsData;
 import me.chenyongrui.movism.data.api.model.tmdb.Profile;
 import me.chenyongrui.movism.data.repository.CastCrewRepository;

@@ -1,4 +1,4 @@
-package me.chenyongrui.movism.ui.activity.module;
+package me.chenyongrui.movism.ui.activity.CrewList;
 
 
 import javax.inject.Named;
@@ -8,8 +8,6 @@ import dagger.Provides;
 import me.chenyongrui.movism.data.api.model.tmdb.Crew;
 import me.chenyongrui.movism.data.repository.CastCrewRepository;
 import me.chenyongrui.movism.ui.ActivityScope;
-import me.chenyongrui.movism.ui.activity.CrewListActivity;
-import me.chenyongrui.movism.ui.activity.presenter.CrewListPresenter;
 import me.chenyongrui.movism.ui.adapters.OmniAdapter;
 import me.chenyongrui.movism.ui.adapters.viewholder.BaseViewHolderFactory;
 import me.chenyongrui.movism.ui.adapters.viewholder.CrewViewHolder;

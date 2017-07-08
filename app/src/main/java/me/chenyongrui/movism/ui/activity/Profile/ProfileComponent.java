@@ -1,10 +1,8 @@
-package me.chenyongrui.movism.ui.activity.component;
+package me.chenyongrui.movism.ui.activity.Profile;
 
 
 import dagger.Subcomponent;
 import me.chenyongrui.movism.ui.ActivityScope;
-import me.chenyongrui.movism.ui.activity.ProfileActivity;
-import me.chenyongrui.movism.ui.activity.module.ProfileModule;
 
 @ActivityScope
 @Subcomponent(modules = {ProfileModule.class})

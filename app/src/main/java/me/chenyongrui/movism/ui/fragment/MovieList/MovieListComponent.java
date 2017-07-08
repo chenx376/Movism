@@ -1,10 +1,8 @@
-package me.chenyongrui.movism.ui.fragment.component;
+package me.chenyongrui.movism.ui.fragment.MovieList;
 
 
 import dagger.Subcomponent;
 import me.chenyongrui.movism.ui.ActivityScope;
-import me.chenyongrui.movism.ui.fragment.MovieListFragment;
-import me.chenyongrui.movism.ui.fragment.module.MovieListModule;
 
 @ActivityScope
 @Subcomponent(modules = {MovieListModule.class})

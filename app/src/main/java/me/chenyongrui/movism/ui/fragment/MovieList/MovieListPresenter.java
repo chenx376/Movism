@@ -1,9 +1,9 @@
-package me.chenyongrui.movism.ui.fragment.presenter;
+package me.chenyongrui.movism.ui.fragment.MovieList;
 
 import javax.inject.Inject;
 
 import me.chenyongrui.movism.data.api.model.tmdb.TMDbMovieList;
-import me.chenyongrui.movism.ui.fragment.MovieListFragment;
+import me.chenyongrui.movism.ui.fragment.MovieList.MovieListFragment;
 import me.chenyongrui.movism.data.repository.MovieListRepository;
 import rx.Observer;
 import rx.Subscription;

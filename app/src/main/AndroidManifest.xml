@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.activity.MovieDetailActivity"
+            android:name=".ui.activity.MovieDetail.MovieDetailActivity"
             android:screenOrientation="portrait">
 
         </activity>
@@ -30,13 +30,13 @@
             android:name=".ui.activity.FullImageActivity"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".ui.activity.CrewListActivity"
+            android:name=".ui.activity.CrewList.CrewListActivity"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".ui.activity.CastListActivity"
+            android:name=".ui.activity.CastList.CastListActivity"
             android:screenOrientation="portrait"></activity>
         <activity
-            android:name=".ui.activity.ProfileActivity"
+            android:name=".ui.activity.Profile.ProfileActivity"
             android:screenOrientation="portrait"></activity>
         <activity
             android:name=".ui.activity.SettingsActivity"

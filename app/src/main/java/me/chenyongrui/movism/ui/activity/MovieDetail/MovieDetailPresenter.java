@@ -1,4 +1,4 @@
-package me.chenyongrui.movism.ui.activity.presenter;
+package me.chenyongrui.movism.ui.activity.MovieDetail;
 
 import javax.inject.Inject;
 
@@ -6,7 +6,6 @@ import me.chenyongrui.movism.data.api.model.omdb.OMDbMovie;
 import me.chenyongrui.movism.data.api.model.tmdb.CastsData;
 import me.chenyongrui.movism.data.api.model.tmdb.TMDbMovieDetail;
 import me.chenyongrui.movism.data.api.model.tmdb.TMDbMovieList;
-import me.chenyongrui.movism.ui.activity.MovieDetailActivity;
 import me.chenyongrui.movism.data.repository.CastCrewRepository;
 import me.chenyongrui.movism.data.repository.MovieDetailRepository;
 import rx.Observer;

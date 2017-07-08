@@ -1,4 +1,4 @@
-package me.chenyongrui.movism.ui.activity;
+package me.chenyongrui.movism.ui.activity.CrewList;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,11 +12,11 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import me.chenyongrui.movism.R;
 import me.chenyongrui.movism.AppComponent;
-import me.chenyongrui.movism.ui.activity.module.CrewListModule;
+import me.chenyongrui.movism.R;
 import me.chenyongrui.movism.data.api.model.tmdb.Crew;
-import me.chenyongrui.movism.ui.activity.presenter.CrewListPresenter;
+import me.chenyongrui.movism.ui.activity.BaseActivity;
+import me.chenyongrui.movism.ui.activity.Profile.ProfileActivity;
 import me.chenyongrui.movism.ui.adapters.OmniAdapter;
 import me.chenyongrui.movism.ui.adapters.viewholder.CrewViewHolder;
 

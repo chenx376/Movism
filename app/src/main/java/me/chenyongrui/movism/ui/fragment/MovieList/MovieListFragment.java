@@ -1,4 +1,4 @@
-package me.chenyongrui.movism.ui.fragment;
+package me.chenyongrui.movism.ui.fragment.MovieList;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,15 +18,14 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import me.chenyongrui.movism.R;
 import me.chenyongrui.movism.AppComponent;
-import me.chenyongrui.movism.ui.fragment.module.MovieListModule;
+import me.chenyongrui.movism.R;
 import me.chenyongrui.movism.data.api.model.tmdb.TMDbMovie;
 import me.chenyongrui.movism.data.api.model.tmdb.TMDbMovieList;
-import me.chenyongrui.movism.ui.fragment.presenter.MovieListPresenter;
-import me.chenyongrui.movism.ui.activity.MovieDetailActivity;
+import me.chenyongrui.movism.ui.activity.MovieDetail.MovieDetailActivity;
 import me.chenyongrui.movism.ui.adapters.OmniAdapter;
 import me.chenyongrui.movism.ui.adapters.viewholder.MovieViewHolderStaggeredGrid;
+import me.chenyongrui.movism.ui.fragment.BaseFragment;
 
 
 public class MovieListFragment extends BaseFragment implements OmniAdapter.ItemClickListener<TMDbMovie>

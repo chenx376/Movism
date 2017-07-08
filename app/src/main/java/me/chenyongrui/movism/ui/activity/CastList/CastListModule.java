@@ -1,4 +1,4 @@
-package me.chenyongrui.movism.ui.activity.module;
+package me.chenyongrui.movism.ui.activity.CastList;
 
 
 import javax.inject.Named;
@@ -8,8 +8,6 @@ import dagger.Provides;
 import me.chenyongrui.movism.data.api.model.tmdb.Cast;
 import me.chenyongrui.movism.data.repository.CastCrewRepository;
 import me.chenyongrui.movism.ui.ActivityScope;
-import me.chenyongrui.movism.ui.activity.CastListActivity;
-import me.chenyongrui.movism.ui.activity.presenter.CastListPresenter;
 import me.chenyongrui.movism.ui.adapters.OmniAdapter;
 import me.chenyongrui.movism.ui.adapters.viewholder.BaseViewHolderFactory;
 import me.chenyongrui.movism.ui.adapters.viewholder.CastViewHolder;

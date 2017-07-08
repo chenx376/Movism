@@ -1,4 +1,4 @@
-package me.chenyongrui.movism.ui.activity.module;
+package me.chenyongrui.movism.ui.activity.MovieDetail;
 
 
 import javax.inject.Named;
@@ -11,8 +11,6 @@ import me.chenyongrui.movism.data.api.model.tmdb.TMDbMovie;
 import me.chenyongrui.movism.data.repository.CastCrewRepository;
 import me.chenyongrui.movism.data.repository.MovieDetailRepository;
 import me.chenyongrui.movism.ui.ActivityScope;
-import me.chenyongrui.movism.ui.activity.MovieDetailActivity;
-import me.chenyongrui.movism.ui.activity.presenter.MovieDetailPresenter;
 import me.chenyongrui.movism.ui.adapters.OmniAdapter;
 import me.chenyongrui.movism.ui.adapters.viewholder.BaseViewHolderFactory;
 import me.chenyongrui.movism.ui.adapters.viewholder.CastViewHolder;

@@ -11,16 +11,16 @@ import me.chenyongrui.movism.ui.activity.FullImageActivity;
 import me.chenyongrui.movism.ui.activity.LicenseActivity;
 import me.chenyongrui.movism.ui.activity.MainActivity;
 import me.chenyongrui.movism.ui.activity.SettingsActivity;
-import me.chenyongrui.movism.ui.activity.component.CastListComponent;
-import me.chenyongrui.movism.ui.activity.component.CrewListComponent;
-import me.chenyongrui.movism.ui.activity.component.MovieDetailComponent;
-import me.chenyongrui.movism.ui.activity.component.ProfileComponent;
-import me.chenyongrui.movism.ui.activity.module.CastListModule;
-import me.chenyongrui.movism.ui.activity.module.CrewListModule;
-import me.chenyongrui.movism.ui.activity.module.MovieDetailModule;
-import me.chenyongrui.movism.ui.activity.module.ProfileModule;
-import me.chenyongrui.movism.ui.fragment.component.MovieListComponent;
-import me.chenyongrui.movism.ui.fragment.module.MovieListModule;
+import me.chenyongrui.movism.ui.activity.CastList.CastListComponent;
+import me.chenyongrui.movism.ui.activity.CrewList.CrewListComponent;
+import me.chenyongrui.movism.ui.activity.MovieDetail.MovieDetailComponent;
+import me.chenyongrui.movism.ui.activity.Profile.ProfileComponent;
+import me.chenyongrui.movism.ui.activity.CastList.CastListModule;
+import me.chenyongrui.movism.ui.activity.CrewList.CrewListModule;
+import me.chenyongrui.movism.ui.activity.MovieDetail.MovieDetailModule;
+import me.chenyongrui.movism.ui.activity.Profile.ProfileModule;
+import me.chenyongrui.movism.ui.fragment.MovieList.MovieListComponent;
+import me.chenyongrui.movism.ui.fragment.MovieList.MovieListModule;
 
 @Singleton
 @Component(modules = {AppModule.class, OMDbAPIModule.class, TMDbAPIModule.class, RepositoryModule.class})

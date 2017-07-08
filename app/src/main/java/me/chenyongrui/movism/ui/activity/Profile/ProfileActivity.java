@@ -1,4 +1,4 @@
-package me.chenyongrui.movism.ui.activity;
+package me.chenyongrui.movism.ui.activity.Profile;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,8 +21,8 @@ import me.chenyongrui.movism.AppComponent;
 import me.chenyongrui.movism.R;
 import me.chenyongrui.movism.data.api.model.tmdb.MovieCredits;
 import me.chenyongrui.movism.data.api.model.tmdb.Profile;
-import me.chenyongrui.movism.ui.activity.module.ProfileModule;
-import me.chenyongrui.movism.ui.activity.presenter.ProfilePresenter;
+import me.chenyongrui.movism.ui.activity.BaseActivity;
+import me.chenyongrui.movism.ui.activity.MovieDetail.MovieDetailActivity;
 import me.chenyongrui.movism.ui.adapters.OmniAdapter;
 import me.chenyongrui.movism.ui.adapters.viewholder.MovieCreditsViewHolder;
 import me.chenyongrui.movism.utils.Constant;

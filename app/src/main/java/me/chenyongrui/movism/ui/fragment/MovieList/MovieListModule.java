@@ -1,4 +1,4 @@
-package me.chenyongrui.movism.ui.fragment.module;
+package me.chenyongrui.movism.ui.fragment.MovieList;
 
 
 import dagger.Module;
@@ -10,8 +10,6 @@ import me.chenyongrui.movism.ui.adapters.OmniAdapter;
 import me.chenyongrui.movism.ui.adapters.viewholder.BaseViewHolderFactory;
 import me.chenyongrui.movism.ui.adapters.viewholder.MovieViewHolderStaggeredGrid;
 import me.chenyongrui.movism.ui.adapters.viewholder.MovieViewHolderStaggeredGridFactory;
-import me.chenyongrui.movism.ui.fragment.MovieListFragment;
-import me.chenyongrui.movism.ui.fragment.presenter.MovieListPresenter;
 
 @Module
 public class MovieListModule {

@@ -1,8 +1,7 @@
-package me.chenyongrui.movism.ui.activity.presenter;
+package me.chenyongrui.movism.ui.activity.CastList;
 
 import javax.inject.Inject;
 
-import me.chenyongrui.movism.ui.activity.CrewListActivity;
 import me.chenyongrui.movism.data.api.model.tmdb.CastsData;
 import me.chenyongrui.movism.data.repository.CastCrewRepository;
 import rx.Observer;
@@ -11,16 +10,16 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 
-public class CrewListPresenter  {
+public class CastListPresenter {
 
-    private final CrewListActivity view;
+    private final CastListActivity view;
 
     private Subscription subscription = null;
+
     private CastCrewRepository castCrewRepository;
 
-
     @Inject
-    public CrewListPresenter(CrewListActivity view, CastCrewRepository castCrewRepository) {
+    public CastListPresenter(CastListActivity view, CastCrewRepository castCrewRepository) {
         this.view = view;
         this.castCrewRepository = castCrewRepository;
     }
@@ -33,7 +32,7 @@ public class CrewListPresenter  {
         }
     }
 
-    public void presentCrewListData(int movieID) {
+    public void presentCastListData(int movieID) {
         subscription = castCrewRepository
                 .getMovieCastsData(movieID)
                 .subscribeOn(Schedulers.io())
@@ -51,7 +50,7 @@ public class CrewListPresenter  {
                     @Override
                     public void onNext(CastsData castsData) {
                         if (view != null) {
-                            view.showCrewListData(castsData.getCrew());
+                            view.showCastListData(castsData.getCast());
                         }
                     }
                 });

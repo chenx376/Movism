@@ -1,4 +1,4 @@
-package me.chenyongrui.movism.ui.activity.module;
+package me.chenyongrui.movism.ui.activity.Profile;
 
 
 import dagger.Module;
@@ -6,8 +6,6 @@ import dagger.Provides;
 import me.chenyongrui.movism.data.api.model.tmdb.MovieCredits;
 import me.chenyongrui.movism.data.repository.CastCrewRepository;
 import me.chenyongrui.movism.ui.ActivityScope;
-import me.chenyongrui.movism.ui.activity.ProfileActivity;
-import me.chenyongrui.movism.ui.activity.presenter.ProfilePresenter;
 import me.chenyongrui.movism.ui.adapters.OmniAdapter;
 import me.chenyongrui.movism.ui.adapters.viewholder.BaseViewHolderFactory;
 import me.chenyongrui.movism.ui.adapters.viewholder.MovieCreditsViewHolder;

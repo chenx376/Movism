@@ -12,7 +12,7 @@ import me.chenyongrui.movism.ui.adapters.viewholder.BaseViewHolder;
 import me.chenyongrui.movism.ui.adapters.viewholder.BaseViewHolderFactory;
 
 
-public class OmniAdapter<Object, VH extends BaseViewHolder<Object>> extends RecyclerView.Adapter<VH> {
+public class OmniAdapter<T, VH extends BaseViewHolder<T>> extends RecyclerView.Adapter<VH> {
 
     private Context context;
     private BaseViewHolderFactory viewHolderFactories;
@@ -22,7 +22,7 @@ public class OmniAdapter<Object, VH extends BaseViewHolder<Object>> extends Recy
     }
 
     private ItemClickListener itemClickListener;
-    private final List<Object> dataList = new ArrayList<>();
+    private final List<T> dataList = new ArrayList<>();
 
     @Override
     public int getItemCount() {
@@ -36,7 +36,7 @@ public class OmniAdapter<Object, VH extends BaseViewHolder<Object>> extends Recy
 
     }
 
-    public void addData(List<Object> dataList) {
+    public void addData(List<T> dataList) {
         this.dataList.addAll(dataList);
         notifyDataSetChanged();
     }
@@ -46,8 +46,8 @@ public class OmniAdapter<Object, VH extends BaseViewHolder<Object>> extends Recy
         notifyDataSetChanged();
     }
 
-    public void addData(Object object) {
-        this.dataList.add(object);
+    public void addData(T t) {
+        this.dataList.add(t);
         notifyItemInserted(dataList.size() - 1);
     }
 
@@ -72,8 +72,8 @@ public class OmniAdapter<Object, VH extends BaseViewHolder<Object>> extends Recy
         viewHolder.bind(dataList.get(position));
     }
 
-    public interface ItemClickListener<Object> {
-        void onItemClicked(Object object);
+    public interface ItemClickListener<T> {
+        void onItemClicked(T object);
     }
 
 }

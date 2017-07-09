@@ -19,7 +19,12 @@ import me.chenyongrui.movism.ui.fragment.movielist.MovieListComponent;
 import me.chenyongrui.movism.ui.fragment.movielist.MovieListModule;
 
 @Singleton
-@Component(modules = {AppModule.class, OMDbAPIModule.class, TMDbAPIModule.class, RepositoryModule.class})
+@Component(modules = {
+        AppModule.class,
+        OMDbAPIModule.class,
+        TMDbAPIModule.class,
+        RepositoryModule.class
+})
 public interface AppComponent {
     void inject(MovismApp app);
 

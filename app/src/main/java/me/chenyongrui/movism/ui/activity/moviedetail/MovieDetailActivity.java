@@ -60,7 +60,7 @@ import me.chenyongrui.movism.utils.Constant;
 import static me.chenyongrui.movism.R.id.detail_title;
 
 
-public class MovieDetailActivity extends BaseActivity implements OmniAdapter.ItemClickListener<Object> {
+public class MovieDetailActivity extends BaseActivity implements OmniAdapter.ItemClickListener<Object>, MovieDetailContract.View {
 
 
     @BindView(R.id.runtime_holder)
@@ -88,7 +88,7 @@ public class MovieDetailActivity extends BaseActivity implements OmniAdapter.Ite
     private String backdropPath;
 
     @Inject
-    MovieDetailPresenter presenter;
+    MovieDetailContract.Presenter presenter;
 
     @Inject
     OmniAdapter<TMDbMovie, MovieViewHolderLinearHorizontal> similarMovieAdapter;
@@ -171,7 +171,8 @@ public class MovieDetailActivity extends BaseActivity implements OmniAdapter.Ite
 
     private static final String IMAGE_QUALITY = "w500";
 
-    protected String getRealPosterURL(String posterURL) {
+    @Override
+    public String getRealPosterURL(String posterURL) {
         return Constant.BASE_IMAGE_URL + IMAGE_QUALITY + posterURL;
     }
 
@@ -201,7 +202,6 @@ public class MovieDetailActivity extends BaseActivity implements OmniAdapter.Ite
             collapsingToolbar.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
         }
 
-
         //present movie's information
         presenter.presentMovieDetailData(movieID);
         presenter.presentSimilarMovieData(movieID);
@@ -216,6 +216,7 @@ public class MovieDetailActivity extends BaseActivity implements OmniAdapter.Ite
         presenter.clearSubscription();
     }
 
+    @Override
     public void showMovieDetail(TMDbMovieDetail movieDetail) {
         loadBackdropAndSetColorBar(movieDetail);
         detailTagline.setText(movieDetail.getTagline());
@@ -256,6 +257,7 @@ public class MovieDetailActivity extends BaseActivity implements OmniAdapter.Ite
         tmdbRating.setText(movieDetail.getVoteAverage() + "/10");
     }
 
+    @Override
     public void showExtraRatingData(OMDbMovie omDbMovie) {
         for (Rating rating : omDbMovie.getRatings()) {
             String source = rating.getSource();
@@ -274,6 +276,7 @@ public class MovieDetailActivity extends BaseActivity implements OmniAdapter.Ite
         }
     }
 
+    @Override
     public void showCrewListData(List<Crew> crewList) {
         if (crewList.size() > 3) {
             crewMore.setVisibility(View.VISIBLE);
@@ -289,6 +292,7 @@ public class MovieDetailActivity extends BaseActivity implements OmniAdapter.Ite
         }
     }
 
+    @Override
     public void showCastListData(List<Cast> castList) {
         if (castList.size() > 3) {
             castMore.setVisibility(View.VISIBLE);
@@ -304,6 +308,7 @@ public class MovieDetailActivity extends BaseActivity implements OmniAdapter.Ite
         }
     }
 
+    @Override
     public void showSimilarMovieListData(TMDbMovieList movieList) {
         setSimilarMovieAdapter();
         similarMovieAdapter.addData(movieList.getTMDbMovieList());
@@ -311,7 +316,8 @@ public class MovieDetailActivity extends BaseActivity implements OmniAdapter.Ite
     }
 
 
-    private void setCrewListAdapter() {
+    @Override
+    public void setCrewListAdapter() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         crewRecycler.setLayoutManager(linearLayoutManager);
@@ -319,7 +325,8 @@ public class MovieDetailActivity extends BaseActivity implements OmniAdapter.Ite
         crewListAdapter.setItemClickListener(this);
     }
 
-    private void setCastListAdapter() {
+    @Override
+    public void setCastListAdapter() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         castRecycler.setLayoutManager(linearLayoutManager);
@@ -327,7 +334,8 @@ public class MovieDetailActivity extends BaseActivity implements OmniAdapter.Ite
         castListAdapter.setItemClickListener(this);
     }
 
-    private void setSimilarMovieAdapter() {
+    @Override
+    public void setSimilarMovieAdapter() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         similarRecycler.setLayoutManager(linearLayoutManager);
@@ -377,7 +385,8 @@ public class MovieDetailActivity extends BaseActivity implements OmniAdapter.Ite
     }
 
 
-    private void loadBackdropAndSetColorBar(TMDbMovieDetail movieDetail) {
+    @Override
+    public void loadBackdropAndSetColorBar(TMDbMovieDetail movieDetail) {
 
 
         backdropPath = movieDetail.getBackdropPath();

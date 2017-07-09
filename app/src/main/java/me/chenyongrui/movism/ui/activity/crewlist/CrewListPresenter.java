@@ -8,24 +8,26 @@ import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
 
-public class CrewListPresenter {
+public class CrewListPresenter implements CrewListContract.Presenter {
 
-    private final CrewListActivity view;
+    private final CrewListContract.View view;
 
     private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
     private CastCrewRepository castCrewRepository;
 
 
     @Inject
-    public CrewListPresenter(CrewListActivity view, CastCrewRepository castCrewRepository) {
+    public CrewListPresenter(CrewListContract.View view, CastCrewRepository castCrewRepository) {
         this.view = view;
         this.castCrewRepository = castCrewRepository;
     }
 
+    @Override
     public void clearSubscription() {
         mCompositeSubscription.clear();
     }
 
+    @Override
     public void presentCrewListData(int movieID) {
         mCompositeSubscription.add(castCrewRepository
                 .getMovieCastsData(movieID)

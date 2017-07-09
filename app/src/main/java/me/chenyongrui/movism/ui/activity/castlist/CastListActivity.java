@@ -21,11 +21,11 @@ import me.chenyongrui.movism.ui.adapters.OmniAdapter;
 import me.chenyongrui.movism.ui.adapters.viewholder.CastViewHolder;
 
 
-public class CastListActivity extends BaseActivity implements OmniAdapter.ItemClickListener<Cast> {
+public class CastListActivity extends BaseActivity implements OmniAdapter.ItemClickListener<Cast>, CastListContract.View {
     private String movieTitle;
     private int movieID;
     @Inject
-    CastListPresenter presenter;
+    CastListContract.Presenter presenter;
     @Inject
     OmniAdapter<Cast, CastViewHolder> castListAdapter;
 
@@ -64,13 +64,15 @@ public class CastListActivity extends BaseActivity implements OmniAdapter.ItemCl
 
     }
 
+    @Override
     public void showCastListData(List<Cast> castList) {
         setCastListAdapter();
         castListAdapter.addData(castList);
 
     }
 
-    private void setCastListAdapter() {
+    @Override
+    public void setCastListAdapter() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         castRecycler.setLayoutManager(linearLayoutManager);

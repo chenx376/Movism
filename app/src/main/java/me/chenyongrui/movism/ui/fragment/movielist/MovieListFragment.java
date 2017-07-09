@@ -28,11 +28,11 @@ import me.chenyongrui.movism.ui.adapters.OmniAdapter;
 import me.chenyongrui.movism.ui.adapters.viewholder.MovieViewHolderStaggeredGrid;
 import me.chenyongrui.movism.ui.fragment.BaseFragment;
 
-
 public class MovieListFragment extends BaseFragment implements OmniAdapter.ItemClickListener<TMDbMovie>
-        , SwipeRefreshLayout.OnRefreshListener, OnMoreListener {
+        , SwipeRefreshLayout.OnRefreshListener, OnMoreListener, MovieListContract.View {
     @Inject
-    MovieListPresenter presenter;
+    MovieListContract.Presenter presenter;
+
     @Inject
     OmniAdapter<TMDbMovie, MovieViewHolderStaggeredGrid> movieAdapter;
 
@@ -76,13 +76,16 @@ public class MovieListFragment extends BaseFragment implements OmniAdapter.ItemC
         return view;
     }
 
-    private void refreshMovieListData() {
+    @Override
+    public void refreshMovieListData() {
         movieAdapter.removeAllData();
         pageNum = 1;
         presenter.presentMovieListData(movieListType, pageNum);
     }
 
-    private void setRecycleAdapter() {
+
+    @Override
+    public void setRecycleAdapter() {
         StaggeredGridLayoutManager staggeredGridLayoutManager
                 = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
         movieRecycler.setLayoutManager(staggeredGridLayoutManager);
@@ -116,6 +119,7 @@ public class MovieListFragment extends BaseFragment implements OmniAdapter.ItemC
         refreshMovieListData();
     }
 
+    @Override
     public void updateMovieListData(TMDbMovieList movieList) {
         movieAdapter.addData(movieList.getTMDbMovieList());
     }
@@ -129,11 +133,13 @@ public class MovieListFragment extends BaseFragment implements OmniAdapter.ItemC
         }
     }
 
+    @Override
     public void onNoMoreData() {
         //stop it;
         movieRecycler.setLoadingMore(true);
     }
 
+    @Override
     public void getSearchedResult(String query) {
         presenter.cleanSubscribe();
 
@@ -145,12 +151,18 @@ public class MovieListFragment extends BaseFragment implements OmniAdapter.ItemC
         hideSoftKeyboard();
     }
 
+    @Override
     public void hideSoftKeyboard() {
         if (getActivity().getCurrentFocus() != null) {
             InputMethodManager inputMethodManager = (InputMethodManager) getActivity()
                     .getSystemService(Context.INPUT_METHOD_SERVICE);
             inputMethodManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
         }
+    }
+
+    @Override
+    public Context getViewContext() {
+        return this.getContext();
     }
 
 }

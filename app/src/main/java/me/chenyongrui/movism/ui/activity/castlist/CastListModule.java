@@ -1,6 +1,8 @@
 package me.chenyongrui.movism.ui.activity.castlist;
 
 
+import android.content.Context;
+
 import javax.inject.Named;
 
 import dagger.Module;
@@ -15,32 +17,30 @@ import me.chenyongrui.movism.ui.adapters.viewholder.CastViewHolderFactory;
 
 @Module
 public class CastListModule {
-    //-------------------------------     mvp     -----------------------
-    private CastListActivity view;
+    private CastListContract.View view;
 
-    public CastListModule(CastListActivity view) {
+    public CastListModule(CastListContract.View view) {
         this.view = view;
     }
 
 
     @ActivityScope
     @Provides
-    public CastListActivity provideView() {
+    public CastListContract.View provideView() {
         return view;
     }
 
 
     @ActivityScope
     @Provides
-    public CastListPresenter providePresenter(CastCrewRepository castCrewRepository) {
+    public CastListContract.Presenter providePresenter(CastListContract.View view, CastCrewRepository castCrewRepository) {
         return new CastListPresenter(view, castCrewRepository);
     }
 
-    //-------------------------------     adapters     -----------------------
     @Provides
     @ActivityScope
-    OmniAdapter<Cast, CastViewHolder> provideCastAdapter(CastListActivity view, @Named("CastViewHolderFactory") BaseViewHolderFactory baseViewHolderFactory) {
-        return new OmniAdapter<>(view, baseViewHolderFactory);
+    OmniAdapter<Cast, CastViewHolder> provideCastAdapter(CastListContract.View view, @Named("CastViewHolderFactory") BaseViewHolderFactory baseViewHolderFactory) {
+        return new OmniAdapter<>((Context) view, baseViewHolderFactory);
     }
 
     @Named("CastViewHolderFactory")
@@ -49,7 +49,6 @@ public class CastListModule {
     BaseViewHolderFactory provideCastViewHolderFactory() {
         return new CastViewHolderFactory();
     }
-
 
 
 }

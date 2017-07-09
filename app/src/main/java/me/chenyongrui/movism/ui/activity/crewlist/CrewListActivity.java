@@ -21,12 +21,12 @@ import me.chenyongrui.movism.ui.adapters.OmniAdapter;
 import me.chenyongrui.movism.ui.adapters.viewholder.CrewViewHolder;
 
 
-public class CrewListActivity extends BaseActivity implements OmniAdapter.ItemClickListener<Crew> {
+public class CrewListActivity extends BaseActivity implements OmniAdapter.ItemClickListener<Crew>, CrewListContract.View {
     private String movieTitle;
     private int movieID;
 
     @Inject
-    CrewListPresenter presenter;
+    CrewListContract.Presenter presenter;
     @Inject
     OmniAdapter<Crew, CrewViewHolder> crewListAdapter;
 
@@ -67,13 +67,15 @@ public class CrewListActivity extends BaseActivity implements OmniAdapter.ItemCl
 
     }
 
+    @Override
     public void showCrewListData(List<Crew> crewList) {
         crewListAdapter.addData(crewList);
         setCrewListAdapter();
 
     }
 
-    private void setCrewListAdapter() {
+    @Override
+    public void setCrewListAdapter() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         crewRecycler.setLayoutManager(linearLayoutManager);

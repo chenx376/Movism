@@ -28,9 +28,9 @@ import me.chenyongrui.movism.ui.adapters.viewholder.MovieCreditsViewHolder;
 import me.chenyongrui.movism.utils.Constant;
 
 
-public class ProfileActivity extends BaseActivity implements OmniAdapter.ItemClickListener<MovieCredits> {
+public class ProfileActivity extends BaseActivity implements OmniAdapter.ItemClickListener<MovieCredits>, ProfileContract.View {
     @Inject
-    ProfilePresenter presenter;
+    ProfileContract.Presenter presenter;
     @Inject
     OmniAdapter<MovieCredits, MovieCreditsViewHolder> creditsAdapter;
 
@@ -52,7 +52,8 @@ public class ProfileActivity extends BaseActivity implements OmniAdapter.ItemCli
     private String type;
     private int profileID;
 
-    protected String getRealPosterURL(String posterURL) {
+    @Override
+    public String getRealPosterURL(String posterURL) {
         return Constant.BASE_IMAGE_URL + Constant.AVATAR_IMAGE_QUALITY + posterURL;
     }
 
@@ -81,7 +82,7 @@ public class ProfileActivity extends BaseActivity implements OmniAdapter.ItemCli
             profileID = intent.getIntExtra("profile_id", -1);
             SetupToolBar(toolbar, intent.getStringExtra("profile_name"), null, true);
         }
-        presenter.presentProfiletData(profileID);
+        presenter.presentProfileData(profileID);
         if (type.equals("crew")) {
             presenter.presentCrewCreditsData(profileID);
         } else {
@@ -89,6 +90,7 @@ public class ProfileActivity extends BaseActivity implements OmniAdapter.ItemCli
         }
     }
 
+    @Override
     public void showProfileData(Profile profile) {
         try {
             Glide.with(this)
@@ -105,6 +107,7 @@ public class ProfileActivity extends BaseActivity implements OmniAdapter.ItemCli
         profileName.setText(profile.getName());
     }
 
+    @Override
     public void showCreditsData(List<MovieCredits> credits) {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);

@@ -1,6 +1,8 @@
 package me.chenyongrui.movism.ui.activity.moviedetail;
 
 
+import android.content.Context;
+
 import javax.inject.Named;
 
 import dagger.Module;
@@ -23,33 +25,30 @@ import me.chenyongrui.movism.ui.adapters.viewholder.MovieViewHolderLinearHorizon
 @Module
 public class MovieDetailModule {
 
-    //-------------------------------     mvp     -----------------------
 
-    private MovieDetailActivity view;
+    private MovieDetailContract.View view;
 
-    public MovieDetailModule(MovieDetailActivity view) {
+    public MovieDetailModule(MovieDetailContract.View view) {
         this.view = view;
     }
 
     @ActivityScope
     @Provides
-    public MovieDetailActivity provideView() {
+    public MovieDetailContract.View provideView() {
         return view;
     }
 
     @ActivityScope
     @Provides
-    public MovieDetailPresenter providePresenter(MovieDetailRepository movieDetailRepository, CastCrewRepository castCrewRepository) {
+    public MovieDetailContract.Presenter providePresenter(MovieDetailContract.View view, MovieDetailRepository movieDetailRepository, CastCrewRepository castCrewRepository) {
         return new MovieDetailPresenter(view, movieDetailRepository, castCrewRepository);
     }
 
 
-    //-------------------------------     adapters     -----------------------
-
     @Provides
     @ActivityScope
-    OmniAdapter<TMDbMovie, MovieViewHolderLinearHorizontal> provideMovieAdapter(MovieDetailActivity view, @Named("MovieViewHolderFactory") BaseViewHolderFactory baseViewHolderFactory) {
-        return new OmniAdapter<>(view, baseViewHolderFactory);
+    OmniAdapter<TMDbMovie, MovieViewHolderLinearHorizontal> provideMovieAdapter(MovieDetailContract.View view, @Named("MovieViewHolderFactory") BaseViewHolderFactory baseViewHolderFactory) {
+        return new OmniAdapter<>((Context) view, baseViewHolderFactory);
     }
 
 
@@ -63,8 +62,8 @@ public class MovieDetailModule {
 
     @Provides
     @ActivityScope
-    OmniAdapter<Crew, CrewViewHolder> provideCrewAdapter(MovieDetailActivity view, @Named("CrewViewHolderFactory") BaseViewHolderFactory baseViewHolderFactory) {
-        return new OmniAdapter<>(view, baseViewHolderFactory);
+    OmniAdapter<Crew, CrewViewHolder> provideCrewAdapter(MovieDetailContract.View view, @Named("CrewViewHolderFactory") BaseViewHolderFactory baseViewHolderFactory) {
+        return new OmniAdapter<>((Context) view, baseViewHolderFactory);
     }
 
     @Named("CrewViewHolderFactory")
@@ -76,8 +75,8 @@ public class MovieDetailModule {
 
     @Provides
     @ActivityScope
-    OmniAdapter<Cast, CastViewHolder> provideCastAdapter(MovieDetailActivity view, @Named("CastViewHolderFactory") BaseViewHolderFactory baseViewHolderFactory) {
-        return new OmniAdapter<>(view, baseViewHolderFactory);
+    OmniAdapter<Cast, CastViewHolder> provideCastAdapter(MovieDetailContract.View view, @Named("CastViewHolderFactory") BaseViewHolderFactory baseViewHolderFactory) {
+        return new OmniAdapter<>((Context) view, baseViewHolderFactory);
     }
 
     @Named("CastViewHolderFactory")

@@ -14,34 +14,31 @@ import me.chenyongrui.movism.ui.adapters.viewholder.MovieViewHolderStaggeredGrid
 @Module
 public class MovieListModule {
 
-    //-------------------------------     mvp     -----------------------
+    private MovieListContract.View view;
 
-    private MovieListFragment view;
-
-    public MovieListModule(MovieListFragment view) {
+    public MovieListModule(MovieListContract.View view) {
         this.view = view;
     }
 
 
     @ActivityScope
     @Provides
-    public MovieListFragment provideView() {
+    public MovieListContract.View provideView() {
         return view;
     }
 
 
     @ActivityScope
     @Provides
-    public MovieListPresenter providePresenter(MovieListRepository repository) {
+    public MovieListContract.Presenter providePresenter(MovieListContract.View view, MovieListRepository repository) {
         return new MovieListPresenter(view, repository);
     }
 
 
-    //-------------------------------     adapters     -----------------------
     @Provides
     @ActivityScope
-    OmniAdapter<TMDbMovie, MovieViewHolderStaggeredGrid> provideAdapter(MovieListFragment view, BaseViewHolderFactory baseViewHolderFactory) {
-        return new OmniAdapter<>(view.getContext(), baseViewHolderFactory);
+    OmniAdapter<TMDbMovie, MovieViewHolderStaggeredGrid> provideAdapter(MovieListContract.View view, BaseViewHolderFactory baseViewHolderFactory) {
+        return new OmniAdapter<>(view.getViewContext(), baseViewHolderFactory);
     }
 
     @Provides

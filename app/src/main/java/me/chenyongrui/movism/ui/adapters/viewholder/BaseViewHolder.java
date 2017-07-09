@@ -4,11 +4,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 
-public abstract class BaseViewHolder<Object> extends RecyclerView.ViewHolder {
+public abstract class BaseViewHolder<T> extends RecyclerView.ViewHolder {
 
     public BaseViewHolder(View itemView) {
         super(itemView);
     }
 
-    public abstract void bind(Object object);
+    public abstract void bind(T T);
 }

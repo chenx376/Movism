@@ -1,6 +1,8 @@
 package me.chenyongrui.movism.ui.activity.profile;
 
 
+import android.content.Context;
+
 import dagger.Module;
 import dagger.Provides;
 import me.chenyongrui.movism.data.api.model.tmdb.MovieCredits;
@@ -13,33 +15,30 @@ import me.chenyongrui.movism.ui.adapters.viewholder.MovieCreditsViewHolderFactor
 
 @Module
 public class ProfileModule {
-    //-------------------------------     mvp     -----------------------
-    private ProfileActivity view;
+    private ProfileContract.View view;
 
-    public ProfileModule(ProfileActivity view) {
+    public ProfileModule(ProfileContract.View view) {
         this.view = view;
     }
 
 
     @ActivityScope
     @Provides
-    public ProfileActivity provideView() {
+    public ProfileContract.View provideView() {
         return view;
     }
 
 
     @ActivityScope
     @Provides
-    public ProfilePresenter providePresenter(CastCrewRepository castCrewRepository) {
+    public ProfileContract.Presenter providePresenter(ProfileContract.View view, CastCrewRepository castCrewRepository) {
         return new ProfilePresenter(view, castCrewRepository);
     }
 
-    //-------------------------------     adapters     -----------------------
-
     @Provides
     @ActivityScope
-    OmniAdapter<MovieCredits, MovieCreditsViewHolder> provideAdapter(ProfileActivity view, BaseViewHolderFactory baseViewHolderFactory) {
-        return new OmniAdapter<>(view, baseViewHolderFactory);
+    OmniAdapter<MovieCredits, MovieCreditsViewHolder> provideAdapter(ProfileContract.View view, BaseViewHolderFactory baseViewHolderFactory) {
+        return new OmniAdapter<>((Context) view, baseViewHolderFactory);
     }
 
     @Provides

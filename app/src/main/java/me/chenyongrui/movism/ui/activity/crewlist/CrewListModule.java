@@ -1,6 +1,8 @@
 package me.chenyongrui.movism.ui.activity.crewlist;
 
 
+import android.content.Context;
+
 import javax.inject.Named;
 
 import dagger.Module;
@@ -15,32 +17,30 @@ import me.chenyongrui.movism.ui.adapters.viewholder.CrewViewHolderFactory;
 
 @Module
 public class CrewListModule {
-    //-------------------------------     mvp     -----------------------
-    private CrewListActivity view;
+    private CrewListContract.View view;
 
-    public CrewListModule(CrewListActivity view) {
+    public CrewListModule(CrewListContract.View view) {
         this.view = view;
     }
 
 
     @ActivityScope
     @Provides
-    public CrewListActivity provideView() {
+    public CrewListContract.View provideView() {
         return view;
     }
 
 
     @ActivityScope
     @Provides
-    public CrewListPresenter providePresenter(CastCrewRepository castCrewRepository) {
+    public CrewListContract.Presenter providePresenter(CrewListContract.View view, CastCrewRepository castCrewRepository) {
         return new CrewListPresenter(view, castCrewRepository);
     }
 
-    //-------------------------------     adapters     -----------------------
     @Provides
     @ActivityScope
-    OmniAdapter<Crew, CrewViewHolder> provideCrewAdapter(CrewListActivity view, @Named("CrewViewHolderFactory") BaseViewHolderFactory baseViewHolderFactory) {
-        return new OmniAdapter<>(view, baseViewHolderFactory);
+    OmniAdapter<Crew, CrewViewHolder> provideCrewAdapter(CrewListContract.View view, @Named("CrewViewHolderFactory") BaseViewHolderFactory baseViewHolderFactory) {
+        return new OmniAdapter<>((Context) view, baseViewHolderFactory);
     }
 
     @Named("CrewViewHolderFactory")

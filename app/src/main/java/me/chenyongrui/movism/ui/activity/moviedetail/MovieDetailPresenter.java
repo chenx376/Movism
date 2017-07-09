@@ -9,16 +9,16 @@ import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
 
-public class MovieDetailPresenter {
+public class MovieDetailPresenter implements MovieDetailContract.Presenter {
 
-    private final MovieDetailActivity view;
+    private final MovieDetailContract.View view;
 
     private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
     private MovieDetailRepository movieDetailRepository;
     private CastCrewRepository castCrewRepository;
 
     @Inject
-    public MovieDetailPresenter(MovieDetailActivity view
+    public MovieDetailPresenter(MovieDetailContract.View view
             , MovieDetailRepository movieDetailRepository
             , CastCrewRepository castCrewRepository) {
         this.view = view;
@@ -26,10 +26,12 @@ public class MovieDetailPresenter {
         this.castCrewRepository = castCrewRepository;
     }
 
+    @Override
     public void clearSubscription() {
         mCompositeSubscription.clear();
     }
 
+    @Override
     public void presentMovieDetailData(int movieID) {
         mCompositeSubscription.add(movieDetailRepository
                 .getMovieDetailData(movieID)
@@ -42,6 +44,7 @@ public class MovieDetailPresenter {
                 }));
     }
 
+    @Override
     public void presentMovieCastsData(int movieID) {
         mCompositeSubscription.add(castCrewRepository
                 .getMovieCastsData(movieID)
@@ -55,6 +58,7 @@ public class MovieDetailPresenter {
                 }));
     }
 
+    @Override
     public void presentSimilarMovieData(int movieID) {
         mCompositeSubscription.add(movieDetailRepository
                 .getSimilarMovieData(movieID)
@@ -67,6 +71,7 @@ public class MovieDetailPresenter {
                 }));
     }
 
+    @Override
     public void presentExtraRatingData(String movieTitle) {
         mCompositeSubscription.add(movieDetailRepository
                 .getMovieDetailData(movieTitle.replace(" ", "+"))

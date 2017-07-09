@@ -9,9 +9,9 @@ import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
 
-public class MovieListPresenter {
+public class MovieListPresenter implements MovieListContract.Presenter {
 
-    private final MovieListFragment view;
+    private final MovieListContract.View view;
 
     private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
 
@@ -20,12 +20,13 @@ public class MovieListPresenter {
 
 
     @Inject
-    public MovieListPresenter(MovieListFragment view, MovieListRepository repository) {
+    public MovieListPresenter(MovieListContract.View view, MovieListRepository repository) {
         this.view = view;
         this.repository = repository;
     }
 
 
+    @Override
     public void presentMovieListData(int movieListType, int page) {
         mCompositeSubscription.add(repository
                 .getMovieListData(movieListType, page)
@@ -42,6 +43,7 @@ public class MovieListPresenter {
     }
 
 
+    @Override
     public void presentSearchedResult(String query, int page) {
         lastSearchSubscription = repository
                 .getSearchedListData(query, page)
@@ -59,11 +61,13 @@ public class MovieListPresenter {
         mCompositeSubscription.add(lastSearchSubscription);
     }
 
+    @Override
     public void clearSubscription() {
         mCompositeSubscription.clear();
     }
 
 
+    @Override
     public void cleanSubscribe() {
         if (lastSearchSubscription != null) {
             mCompositeSubscription.remove(lastSearchSubscription);

@@ -8,25 +8,27 @@ import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
 
-public class ProfilePresenter {
+public class ProfilePresenter implements ProfileContract.Presenter {
 
-    private final ProfileActivity view;
+    private final ProfileContract.View view;
 
     private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
 
     private CastCrewRepository castCrewRepository;
 
     @Inject
-    public ProfilePresenter(ProfileActivity view, CastCrewRepository castCrewRepository) {
+    public ProfilePresenter(ProfileContract.View view, CastCrewRepository castCrewRepository) {
         this.view = view;
         this.castCrewRepository = castCrewRepository;
     }
 
+    @Override
     public void clearSubscription() {
         mCompositeSubscription.clear();
     }
 
-    public void presentProfiletData(int profileID) {
+    @Override
+    public void presentProfileData(int profileID) {
         mCompositeSubscription.add(castCrewRepository
                 .getProfileData(profileID)
                 .subscribeOn(Schedulers.io())
@@ -39,6 +41,7 @@ public class ProfilePresenter {
                 ));
     }
 
+    @Override
     public void presentCastCreditsData(int profileID) {
         mCompositeSubscription.add(castCrewRepository
                 .getMovieCreditsData(profileID)
@@ -52,6 +55,7 @@ public class ProfilePresenter {
     }
 
 
+    @Override
     public void presentCrewCreditsData(int profileID) {
         mCompositeSubscription.add(castCrewRepository
                 .getMovieCreditsData(profileID)

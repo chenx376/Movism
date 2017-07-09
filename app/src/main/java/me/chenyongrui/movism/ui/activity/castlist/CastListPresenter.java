@@ -7,25 +7,26 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 import rx.subscriptions.CompositeSubscription;
 
+class CastListPresenter implements CastListContract.Presenter {
 
-public class CastListPresenter {
-
-    private final CastListActivity view;
+    private final CastListContract.View view;
 
     private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
 
     private CastCrewRepository castCrewRepository;
 
     @Inject
-    public CastListPresenter(CastListActivity view, CastCrewRepository castCrewRepository) {
+    public CastListPresenter(CastListContract.View view, CastCrewRepository castCrewRepository) {
         this.view = view;
         this.castCrewRepository = castCrewRepository;
     }
 
+    @Override
     public void clearSubscription() {
         mCompositeSubscription.clear();
     }
 
+    @Override
     public void presentCastListData(int movieID) {
         mCompositeSubscription.add(castCrewRepository
                 .getMovieCastsData(movieID)

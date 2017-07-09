@@ -42,7 +42,7 @@ public class CastListActivity extends BaseActivity implements OmniAdapter.ItemCl
     @Override
     public void onDestroy() {
         super.onDestroy();
-        presenter.unsubscribeRx();
+        presenter.clearSubscription();
     }
 
     @Override

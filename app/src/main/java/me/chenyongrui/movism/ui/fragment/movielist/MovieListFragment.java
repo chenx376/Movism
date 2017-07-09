@@ -100,7 +100,7 @@ public class MovieListFragment extends BaseFragment implements OmniAdapter.ItemC
     public void onDestroyView() {
         super.onDestroyView();
         Log.d("debug", "onDestroyView: " + this.hashCode());
-        presenter.unsubscribeRx();
+        presenter.clearSubscription();
     }
 
     @Override

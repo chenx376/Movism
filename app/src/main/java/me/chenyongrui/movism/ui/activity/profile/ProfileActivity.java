@@ -65,7 +65,7 @@ public class ProfileActivity extends BaseActivity implements OmniAdapter.ItemCli
     @Override
     public void onDestroy() {
         super.onDestroy();
-        presenter.unsubscribeRx();
+        presenter.clearSubscription();
     }
 
 

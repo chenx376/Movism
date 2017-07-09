@@ -44,7 +44,7 @@ public class CrewListActivity extends BaseActivity implements OmniAdapter.ItemCl
     @Override
     public void onDestroy() {
         super.onDestroy();
-        presenter.unsubscribeRx();
+        presenter.clearSubscription();
     }
 
     @Override

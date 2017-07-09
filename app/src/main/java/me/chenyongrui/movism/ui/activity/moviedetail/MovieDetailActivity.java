@@ -213,7 +213,7 @@ public class MovieDetailActivity extends BaseActivity implements OmniAdapter.Ite
     @Override
     public void onDestroy() {
         super.onDestroy();
-        presenter.unsubscribeRx();
+        presenter.clearSubscription();
     }
 
     public void showMovieDetail(TMDbMovieDetail movieDetail) {

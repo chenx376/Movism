@@ -22,8 +22,8 @@ public class ProfilePresenter {
         this.castCrewRepository = castCrewRepository;
     }
 
-    public void unsubscribeRx() {
-        mCompositeSubscription.unsubscribe();
+    public void clearSubscription() {
+        mCompositeSubscription.clear();
     }
 
     public void presentProfiletData(int profileID) {

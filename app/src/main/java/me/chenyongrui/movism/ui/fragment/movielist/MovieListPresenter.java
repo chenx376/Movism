@@ -59,8 +59,8 @@ public class MovieListPresenter {
         mCompositeSubscription.add(lastSearchSubscription);
     }
 
-    public void unsubscribeRx() {
-        mCompositeSubscription.unsubscribe();
+    public void clearSubscription() {
+        mCompositeSubscription.clear();
     }
 
 

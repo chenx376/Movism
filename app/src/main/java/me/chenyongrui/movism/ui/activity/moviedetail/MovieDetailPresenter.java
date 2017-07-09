@@ -26,8 +26,8 @@ public class MovieDetailPresenter {
         this.castCrewRepository = castCrewRepository;
     }
 
-    public void unsubscribeRx() {
-        mCompositeSubscription.unsubscribe();
+    public void clearSubscription() {
+        mCompositeSubscription.clear();
     }
 
     public void presentMovieDetailData(int movieID) {

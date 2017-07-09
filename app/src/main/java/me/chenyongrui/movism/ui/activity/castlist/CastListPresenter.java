@@ -2,19 +2,17 @@ package me.chenyongrui.movism.ui.activity.castlist;
 
 import javax.inject.Inject;
 
-import me.chenyongrui.movism.data.api.model.tmdb.CastsData;
 import me.chenyongrui.movism.data.repository.CastCrewRepository;
-import rx.Observer;
-import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
+import rx.subscriptions.CompositeSubscription;
 
 
 public class CastListPresenter {
 
     private final CastListActivity view;
 
-    private Subscription subscription = null;
+    private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
 
     private CastCrewRepository castCrewRepository;
 
@@ -25,35 +23,19 @@ public class CastListPresenter {
     }
 
     public void unsubscribeRx() {
-        if (subscription != null) {
-            if (!subscription.isUnsubscribed()) {
-                subscription.unsubscribe();
-            }
-        }
+        mCompositeSubscription.unsubscribe();
     }
 
     public void presentCastListData(int movieID) {
-        subscription = castCrewRepository
+        mCompositeSubscription.add(castCrewRepository
                 .getMovieCastsData(movieID)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<CastsData>() {
-                    @Override
-                    public void onCompleted() {
+                .subscribe(castsData -> {
+                    if (view != null) {
+                        view.showCastListData(castsData.getCast());
                     }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        e.printStackTrace();
-                    }
-
-                    @Override
-                    public void onNext(CastsData castsData) {
-                        if (view != null) {
-                            view.showCastListData(castsData.getCast());
-                        }
-                    }
-                });
+                }));
     }
 
 }

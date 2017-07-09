@@ -75,17 +75,11 @@ public class ProfileActivity extends BaseActivity implements OmniAdapter.ItemCli
         setContentView(R.layout.activity_profile);
         ButterKnife.bind(this);
 
-        setSupportActionBar(toolbar);
-
         Intent intent = getIntent();
         if (intent != null) {
             type = intent.getStringExtra("type");
-
             profileID = intent.getIntExtra("profile_id", -1);
-            if (getSupportActionBar() != null) {
-                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-                getSupportActionBar().setTitle(intent.getStringExtra("profile_name"));
-            }
+            SetupToolBar(toolbar, intent.getStringExtra("profile_name"), null, true);
         }
         presenter.presentProfiletData(profileID);
         if (type.equals("crew")) {

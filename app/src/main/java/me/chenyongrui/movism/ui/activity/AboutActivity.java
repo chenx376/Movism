@@ -10,8 +10,8 @@ import com.vansuita.materialabout.views.AboutView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import me.chenyongrui.movism.R;
 import me.chenyongrui.movism.AppComponent;
+import me.chenyongrui.movism.R;
 
 
 public class AboutActivity extends BaseActivity {
@@ -24,7 +24,7 @@ public class AboutActivity extends BaseActivity {
 
     @Override
     protected void injectDependencies(AppComponent appComponent) {
-        appComponent.inject(this);
+
     }
 
 
@@ -34,13 +34,8 @@ public class AboutActivity extends BaseActivity {
         setContentView(R.layout.activity_about);
         ButterKnife.bind(this);
 
-        setSupportActionBar(toolbar);
 
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setTitle("About");
-        }
-
+        SetupToolBar(toolbar, "About", null, true);
 
         AboutView view = AboutBuilder.with(this)
                 .setPhoto(R.drawable.github)

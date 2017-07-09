@@ -2,26 +2,18 @@ package me.chenyongrui.movism.ui.activity.moviedetail;
 
 import javax.inject.Inject;
 
-import me.chenyongrui.movism.data.api.model.omdb.OMDbMovie;
-import me.chenyongrui.movism.data.api.model.tmdb.CastsData;
-import me.chenyongrui.movism.data.api.model.tmdb.TMDbMovieDetail;
-import me.chenyongrui.movism.data.api.model.tmdb.TMDbMovieList;
 import me.chenyongrui.movism.data.repository.CastCrewRepository;
 import me.chenyongrui.movism.data.repository.MovieDetailRepository;
-import rx.Observer;
-import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
+import rx.subscriptions.CompositeSubscription;
 
 
 public class MovieDetailPresenter {
 
     private final MovieDetailActivity view;
 
-    private Subscription subscriptionDetail;
-    private Subscription subscriptionCasts;
-    private Subscription subscriptionSimilar;
-    private Subscription subscriptionExtraRating;
+    private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
     private MovieDetailRepository movieDetailRepository;
     private CastCrewRepository castCrewRepository;
 
@@ -35,123 +27,55 @@ public class MovieDetailPresenter {
     }
 
     public void unsubscribeRx() {
-        if (subscriptionDetail != null) {
-            if (!subscriptionDetail.isUnsubscribed()) {
-                subscriptionDetail.unsubscribe();
-            }
-        }
-        if (subscriptionCasts != null) {
-            if (!subscriptionCasts.isUnsubscribed()) {
-                subscriptionCasts.unsubscribe();
-            }
-        }
-        if (subscriptionSimilar != null) {
-            if (!subscriptionSimilar.isUnsubscribed()) {
-                subscriptionSimilar.unsubscribe();
-            }
-        }
-        if (subscriptionExtraRating != null) {
-            if (!subscriptionExtraRating.isUnsubscribed()) {
-                subscriptionExtraRating.unsubscribe();
-            }
-        }
+        mCompositeSubscription.unsubscribe();
     }
 
     public void presentMovieDetailData(int movieID) {
-        subscriptionDetail = movieDetailRepository
+        mCompositeSubscription.add(movieDetailRepository
                 .getMovieDetailData(movieID)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<TMDbMovieDetail>() {
-
-                    @Override
-                    public void onCompleted() {
+                .subscribe(movieDetail -> {
+                    if (view != null) {
+                        view.showMovieDetail(movieDetail);
                     }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        e.printStackTrace();
-                    }
-
-                    @Override
-                    public void onNext(TMDbMovieDetail movieDetail) {
-                        if (view != null) {
-                            view.showMovieDetail(movieDetail);
-                        }
-                    }
-                });
+                }));
     }
 
     public void presentMovieCastsData(int movieID) {
-        subscriptionCasts = castCrewRepository
+        mCompositeSubscription.add(castCrewRepository
                 .getMovieCastsData(movieID)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<CastsData>() {
-                    @Override
-                    public void onCompleted() {
+                .subscribe(castsData -> {
+                    if (view != null) {
+                        view.showCastListData(castsData.getCast());
+                        view.showCrewListData(castsData.getCrew());
                     }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        e.printStackTrace();
-                    }
-
-                    @Override
-                    public void onNext(CastsData castsData) {
-                        if (view != null) {
-                            view.showCastListData(castsData.getCast());
-                            view.showCrewListData(castsData.getCrew());
-                        }
-                    }
-                });
+                }));
     }
 
     public void presentSimilarMovieData(int movieID) {
-        subscriptionSimilar = movieDetailRepository
+        mCompositeSubscription.add(movieDetailRepository
                 .getSimilarMovieData(movieID)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<TMDbMovieList>() {
-                    @Override
-                    public void onCompleted() {
+                .subscribe(movieList -> {
+                    if (view != null) {
+                        view.showSimilarMovieListData(movieList);
                     }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        e.printStackTrace();
-                    }
-
-                    @Override
-                    public void onNext(TMDbMovieList movieList) {
-                        if (view != null) {
-                            view.showSimilarMovieListData(movieList);
-                        }
-                    }
-                });
+                }));
     }
 
     public void presentExtraRatingData(String movieTitle) {
-        subscriptionExtraRating = movieDetailRepository
+        mCompositeSubscription.add(movieDetailRepository
                 .getMovieDetailData(movieTitle.replace(" ", "+"))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<OMDbMovie>() {
-                    @Override
-                    public void onCompleted() {
+                .subscribe(movie -> {
+                    if (view != null) {
+                        view.showExtraRatingData(movie);
                     }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        e.printStackTrace();
-                    }
-
-                    @Override
-                    public void onNext(OMDbMovie movie) {
-                        if (view != null) {
-                            view.showExtraRatingData(movie);
-                        }
-                    }
-                });
+                }));
     }
 }

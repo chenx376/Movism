@@ -46,9 +46,9 @@ import me.chenyongrui.movism.data.api.model.tmdb.TMDbMovie;
 import me.chenyongrui.movism.data.api.model.tmdb.TMDbMovieDetail;
 import me.chenyongrui.movism.data.api.model.tmdb.TMDbMovieList;
 import me.chenyongrui.movism.ui.activity.BaseActivity;
+import me.chenyongrui.movism.ui.activity.FullImageActivity;
 import me.chenyongrui.movism.ui.activity.castlist.CastListActivity;
 import me.chenyongrui.movism.ui.activity.crewlist.CrewListActivity;
-import me.chenyongrui.movism.ui.activity.FullImageActivity;
 import me.chenyongrui.movism.ui.activity.profile.ProfileActivity;
 import me.chenyongrui.movism.ui.adapters.OmniAdapter;
 import me.chenyongrui.movism.ui.adapters.viewholder.CastViewHolder;
@@ -190,19 +190,15 @@ public class MovieDetailActivity extends BaseActivity implements OmniAdapter.Ite
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
         }
 
-
-        setSupportActionBar(toolbar);
-
         Intent intent = getIntent();
         if (intent != null) {
             movieTitle = intent.getStringExtra("movie_title");
             movieID = intent.getIntExtra("movie_id", -1);
             detailTitle.setText(movieTitle);
-            if (getSupportActionBar() != null) {
-                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-                collapsingToolbar.setTitle(movieTitle);
-                collapsingToolbar.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
-            }
+
+            SetupToolBar(toolbar, null, null, true);
+            collapsingToolbar.setTitle(movieTitle);
+            collapsingToolbar.setExpandedTitleColor(getResources().getColor(android.R.color.transparent));
         }
 
 

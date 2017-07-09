@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,7 +67,7 @@ public class MovieListFragment extends BaseFragment implements OmniAdapter.ItemC
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_movie_list, container, false);
-        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
 
         setRecycleAdapter();
 
@@ -98,6 +99,7 @@ public class MovieListFragment extends BaseFragment implements OmniAdapter.ItemC
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        Log.d("debug", "onDestroyView: " + this.hashCode());
         presenter.unsubscribeRx();
     }
 
@@ -133,7 +135,8 @@ public class MovieListFragment extends BaseFragment implements OmniAdapter.ItemC
     }
 
     public void getSearchedResult(String query) {
-        presenter.unsubscribeRx();
+        presenter.cleanSubscribe();
+
         movieAdapter.removeAllData();
         this.query = query.trim().replace(" ", "-");
         //initialize page number, and refresh all movie list data

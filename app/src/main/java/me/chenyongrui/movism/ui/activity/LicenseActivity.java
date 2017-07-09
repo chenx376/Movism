@@ -1,6 +1,5 @@
 package me.chenyongrui.movism.ui.activity;
 
-
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,26 +22,19 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import me.chenyongrui.movism.R;
 import me.chenyongrui.movism.AppComponent;
+import me.chenyongrui.movism.R;
 
 public class LicenseActivity extends BaseActivity {
-    @BindView(R.id.license_recycler)
-    RecyclerView licenseRecycler;
-
+    @BindView(R.id.recycler)
+    RecyclerView recycler;
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
     @Override
     protected void injectDependencies(AppComponent appComponent) {
-        appComponent.inject(this);
     }
 
-    private String getValue(String tag, Element element) {
-        NodeList nodeList = element.getElementsByTagName(tag).item(0).getChildNodes();
-        Node node = nodeList.item(0);
-        return node.getNodeValue();
-    }
 
     private List loadDataFromXML(int xmlFileID) {
         List<LicenseListAdapter.LicenseItem> licenseItemList = new ArrayList();
@@ -55,11 +47,11 @@ public class LicenseActivity extends BaseActivity {
             for (int i = 0; i < nList.getLength(); i++) {
                 Node node = nList.item(i);
                 if (node.getNodeType() == Node.ELEMENT_NODE) {
-                    Element element2 = (Element) node;
-                    licenseItemList.add(
-                            new LicenseListAdapter.LicenseItem(getValue("license_author", element2)
-                                    , getValue("license_intro", element2)
-                                    , getValue("license_name", element2)));
+                    Element ele = (Element) node;
+                    String author = ele.getElementsByTagName("license_author").item(0).getChildNodes().item(0).getNodeValue();
+                    String intro = ele.getElementsByTagName("license_intro").item(0).getChildNodes().item(0).getNodeValue();
+                    String name = ele.getElementsByTagName("license_name").item(0).getChildNodes().item(0).getNodeValue();
+                    licenseItemList.add(new LicenseListAdapter.LicenseItem(author, intro, name));
                 }
             }
         } catch (Exception e) {
@@ -74,18 +66,20 @@ public class LicenseActivity extends BaseActivity {
         setContentView(R.layout.activity_license);
         ButterKnife.bind(this);
 
-        setSupportActionBar(toolbar);
+        SetupToolBar(toolbar, "License", null, true);
 
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setTitle("License");
-        }
+        setRecycleAdapter();
+
+    }
+
+    private void setRecycleAdapter() {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        licenseRecycler.setLayoutManager(linearLayoutManager);
+        recycler.setLayoutManager(linearLayoutManager);
         LicenseListAdapter licenseListAdapter = new LicenseListAdapter(loadDataFromXML(R.raw.license));
-        licenseRecycler.setAdapter(licenseListAdapter);
+        recycler.setAdapter(licenseListAdapter);
     }
+
 
     static class LicenseListAdapter extends RecyclerView.Adapter<LicenseListAdapter.ViewHolder> {
         private List<LicenseItem> licenseItemList;

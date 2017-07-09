@@ -2,7 +2,6 @@ package me.chenyongrui.movism.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +11,11 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import me.chenyongrui.movism.AppComponent;
 import me.chenyongrui.movism.R;
 
 
-public class OverviewFragment extends Fragment {
+public class OverviewFragment extends BaseFragment {
 
     String titleValue, descValue;
     @BindView(R.id.btn_close)
@@ -30,7 +30,7 @@ public class OverviewFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_overview, container, false);
-        ButterKnife.bind(this, view);
+        unbinder = ButterKnife.bind(this, view);
 
         titleValue = getArguments().getString("movie_title", "");
         descValue = getArguments().getString("movie_overview", "");
@@ -43,5 +43,10 @@ public class OverviewFragment extends Fragment {
     @OnClick(R.id.btn_close)
     public void onViewClicked() {
         getFragmentManager().popBackStack();
+    }
+
+    @Override
+    protected void injectDependencies(AppComponent appComponent) {
+        
     }
 }

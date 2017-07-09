@@ -2,21 +2,21 @@ package me.chenyongrui.movism.ui.fragment.movielist;
 
 import javax.inject.Inject;
 
-import me.chenyongrui.movism.data.api.model.tmdb.TMDbMovieList;
 import me.chenyongrui.movism.data.repository.MovieListRepository;
-import rx.Observer;
 import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
+import rx.subscriptions.CompositeSubscription;
 
 
 public class MovieListPresenter {
 
     private final MovieListFragment view;
 
-    private Subscription subscription = null;
+    private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
 
     private MovieListRepository repository;
+    private Subscription lastSearchSubscription;
 
 
     @Inject
@@ -27,66 +27,46 @@ public class MovieListPresenter {
 
 
     public void presentMovieListData(int movieListType, int page) {
-        subscription = repository
+        mCompositeSubscription.add(repository
                 .getMovieListData(movieListType, page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<TMDbMovieList>() {
-                    @Override
-                    public void onCompleted() {
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        e.printStackTrace();
-                    }
-
-                    @Override
-                    public void onNext(TMDbMovieList movieList) {
-                        if (view != null) {
-                            view.updateMovieListData(movieList);
-                            if (movieList.getPage() == movieList.getTotalPages()) {
-                                view.onNoMoreData();
-                            }
+                .subscribe(movieList -> {
+                    if (view != null) {
+                        view.updateMovieListData(movieList);
+                        if (movieList.getPage() == movieList.getTotalPages()) {
+                            view.onNoMoreData();
                         }
                     }
-                });
+                }));
     }
 
 
     public void presentSearchedResult(String query, int page) {
-        subscription = repository
+        lastSearchSubscription = repository
                 .getSearchedListData(query, page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<TMDbMovieList>() {
-                    @Override
-                    public void onCompleted() {
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        e.printStackTrace();
-                    }
-
-                    @Override
-                    public void onNext(TMDbMovieList movieList) {
-                        if (view != null) {
-                            view.updateMovieListData(movieList);
-                            if (movieList.getPage() == movieList.getTotalPages()) {
-                                view.onNoMoreData();
+                .subscribe(movieList -> {
+                            if (view != null) {
+                                view.updateMovieListData(movieList);
+                                if (movieList.getPage() == movieList.getTotalPages()) {
+                                    view.onNoMoreData();
+                                }
                             }
                         }
-                    }
-                });
-
+                );
+        mCompositeSubscription.add(lastSearchSubscription);
     }
 
     public void unsubscribeRx() {
-        if (subscription != null) {
-            if (!subscription.isUnsubscribed()) {
-                subscription.unsubscribe();
-            }
+        mCompositeSubscription.unsubscribe();
+    }
+
+
+    public void cleanSubscribe() {
+        if (lastSearchSubscription != null) {
+            mCompositeSubscription.remove(lastSearchSubscription);
         }
     }
 }

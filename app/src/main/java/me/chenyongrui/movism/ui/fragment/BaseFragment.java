@@ -6,8 +6,9 @@ import android.support.v4.app.Fragment;
 
 import javax.inject.Inject;
 
-import me.chenyongrui.movism.MovismApp;
+import butterknife.Unbinder;
 import me.chenyongrui.movism.AppComponent;
+import me.chenyongrui.movism.MovismApp;
 import me.chenyongrui.movism.utils.ToastUtil;
 
 
@@ -15,7 +16,7 @@ public abstract class BaseFragment extends Fragment {
 
     @Inject
     ToastUtil toastUtil;
-
+    protected Unbinder unbinder;
 
 
     protected abstract void injectDependencies(AppComponent appComponent);
@@ -30,5 +31,11 @@ public abstract class BaseFragment extends Fragment {
     protected void showToast(String message) {
         toastUtil.showToast(message);
     }
-
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (unbinder != null) {
+            unbinder.unbind();
+        }
+    }
 }

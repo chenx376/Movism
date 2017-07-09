@@ -12,9 +12,9 @@ android {
         versionCode 5
         versionName "1.1.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-//        jackOptions {
-//            enabled true
-//        }
+        jackOptions {
+            enabled true
+        }
     }
     buildTypes {
         release {
@@ -30,10 +30,10 @@ android {
             buildConfigField("String", "OMDB_API_KEY", "\"" + getOMDBApiKey() + "\"")
         }
     }
-//    compileOptions {
-//        sourceCompatibility JavaVersion.VERSION_1_8
-//        targetCompatibility JavaVersion.VERSION_1_8
-//    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 def getTMDBApiKey() {

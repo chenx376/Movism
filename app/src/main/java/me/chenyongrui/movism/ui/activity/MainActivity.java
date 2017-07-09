@@ -19,8 +19,8 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import me.chenyongrui.movism.R;
 import me.chenyongrui.movism.AppComponent;
+import me.chenyongrui.movism.R;
 import me.chenyongrui.movism.ui.adapters.MainActivityPagerAdapter;
 import me.chenyongrui.movism.ui.fragment.movielist.MovieListFragment;
 
@@ -48,10 +48,7 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        setSupportActionBar(toolbar);
-
-        if (getSupportActionBar() != null)
-            getSupportActionBar().setTitle(R.string.app_name);
+        SetupToolBar(toolbar, getString(R.string.app_name), null, false);
 
         setupViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);

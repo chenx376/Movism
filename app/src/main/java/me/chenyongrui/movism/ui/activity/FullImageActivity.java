@@ -16,8 +16,8 @@ import com.pnikosis.materialishprogress.ProgressWheel;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import me.chenyongrui.movism.R;
 import me.chenyongrui.movism.AppComponent;
+import me.chenyongrui.movism.R;
 import me.chenyongrui.movism.utils.Constant;
 
 
@@ -32,7 +32,7 @@ public class FullImageActivity extends BaseActivity {
 
     @Override
     protected void injectDependencies(AppComponent appComponent) {
-        appComponent.inject(this);
+
     }
 
 
@@ -48,15 +48,10 @@ public class FullImageActivity extends BaseActivity {
         setContentView(R.layout.activity_full_image);
         ButterKnife.bind(this);
 
-        setSupportActionBar(toolbar);
-
         Intent intent = getIntent();
         if (intent != null) {
             backdropPath = intent.getStringExtra("backdrop_path");
-            if (getSupportActionBar() != null) {
-                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-                getSupportActionBar().setTitle(intent.getStringExtra("movie_title"));
-            }
+            SetupToolBar(toolbar, intent.getStringExtra("movie_title"), null, true);
         }
         progressWheel.setVisibility(View.VISIBLE);
 

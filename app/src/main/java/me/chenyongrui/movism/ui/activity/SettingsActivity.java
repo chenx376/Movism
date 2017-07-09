@@ -11,9 +11,9 @@ import android.support.v7.widget.Toolbar;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import me.chenyongrui.movism.AppComponent;
 import me.chenyongrui.movism.BuildConfig;
 import me.chenyongrui.movism.R;
-import me.chenyongrui.movism.AppComponent;
 import me.chenyongrui.movism.utils.Constant;
 
 
@@ -24,7 +24,6 @@ public class SettingsActivity extends BaseActivity {
 
     @Override
     protected void injectDependencies(AppComponent appComponent) {
-        appComponent.inject(this);
     }
 
     @Override
@@ -33,12 +32,8 @@ public class SettingsActivity extends BaseActivity {
         setContentView(R.layout.activity_settings);
         ButterKnife.bind(this);
 
-        setSupportActionBar(toolbar);
+        SetupToolBar(toolbar, "Settings", null, true);
 
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setTitle(R.string.settings);
-        }
 
         getFragmentManager().beginTransaction().
                 replace(R.id.settings_container,

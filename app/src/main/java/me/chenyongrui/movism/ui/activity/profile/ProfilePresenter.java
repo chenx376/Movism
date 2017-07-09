@@ -2,20 +2,18 @@ package me.chenyongrui.movism.ui.activity.profile;
 
 import javax.inject.Inject;
 
-import me.chenyongrui.movism.data.api.model.tmdb.MovieCreditsData;
-import me.chenyongrui.movism.data.api.model.tmdb.Profile;
 import me.chenyongrui.movism.data.repository.CastCrewRepository;
-import rx.Observer;
-import rx.Subscription;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
+import rx.subscriptions.CompositeSubscription;
 
 
 public class ProfilePresenter {
 
     private final ProfileActivity view;
 
-    private Subscription subscription = null;
+    private CompositeSubscription mCompositeSubscription = new CompositeSubscription();
+
     private CastCrewRepository castCrewRepository;
 
     @Inject
@@ -25,83 +23,45 @@ public class ProfilePresenter {
     }
 
     public void unsubscribeRx() {
-        if (subscription != null) {
-            if (!subscription.isUnsubscribed()) {
-                subscription.unsubscribe();
-            }
-        }
+        mCompositeSubscription.unsubscribe();
     }
 
     public void presentProfiletData(int profileID) {
-        subscription = castCrewRepository
+        mCompositeSubscription.add(castCrewRepository
                 .getProfileData(profileID)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Profile>() {
-                    @Override
-                    public void onCompleted() {
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        e.printStackTrace();
-                    }
-
-                    @Override
-                    public void onNext(Profile profile) {
-                        if (view != null) {
-                            view.showProfileData(profile);
+                .subscribe(profile -> {
+                            if (view != null) {
+                                view.showProfileData(profile);
+                            }
                         }
-                    }
-                });
+                ));
     }
 
     public void presentCastCreditsData(int profileID) {
-        subscription = castCrewRepository
+        mCompositeSubscription.add(castCrewRepository
                 .getMovieCreditsData(profileID)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<MovieCreditsData>() {
-                    @Override
-                    public void onCompleted() {
+                .subscribe(movieCreditsData -> {
+                    if (view != null) {
+                        view.showCreditsData(movieCreditsData.getCast());
                     }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        e.printStackTrace();
-                    }
-
-                    @Override
-                    public void onNext(MovieCreditsData movieCreditsData) {
-                        if (view != null) {
-                            view.showCreditsData(movieCreditsData.getCast());
-                        }
-                    }
-                });
+                }));
     }
 
 
     public void presentCrewCreditsData(int profileID) {
-        subscription = castCrewRepository
+        mCompositeSubscription.add(castCrewRepository
                 .getMovieCreditsData(profileID)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<MovieCreditsData>() {
-                    @Override
-                    public void onCompleted() {
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        e.printStackTrace();
-                    }
-
-                    @Override
-                    public void onNext(MovieCreditsData movieCreditsData) {
-                        if (view != null) {
-                            view.showCreditsData(movieCreditsData.getCrew());
+                .subscribe(movieCreditsData -> {
+                            if (view != null) {
+                                view.showCreditsData(movieCreditsData.getCrew());
+                            }
                         }
-                    }
-                });
+                ));
     }
 }

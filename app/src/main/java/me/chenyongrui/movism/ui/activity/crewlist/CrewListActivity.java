@@ -54,16 +54,13 @@ public class CrewListActivity extends BaseActivity implements OmniAdapter.ItemCl
         ButterKnife.bind(this);
 
 
-        setSupportActionBar(toolbar);
-
         Intent intent = getIntent();
         if (intent != null) {
             movieTitle = intent.getStringExtra("movie_title");
             movieID = intent.getIntExtra("movie_id", -1);
-            if (getSupportActionBar() != null) {
-                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-                getSupportActionBar().setTitle(movieTitle);
-            }
+
+            SetupToolBar(toolbar, movieTitle, null, true);
+
         }
 
         presenter.presentCrewListData(movieID);

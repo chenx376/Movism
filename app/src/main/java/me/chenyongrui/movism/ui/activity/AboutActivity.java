@@ -46,7 +46,7 @@ public class AboutActivity extends BaseActivity {
                 .addWebsiteLink("http://chenyongrui.me")
                 .addEmailLink("yongrui.chen@outlook.com")
                 .addGitHubLink("ChenYongrui")
-                .addFacebookLink("chenyongrui94")
+                .addFacebookLink("yongruic")
                 .addLinkedInLink("yongrui-chen")
                 .setAppIcon(R.mipmap.ic_launcher)
                 .setAppName(R.string.app_name)

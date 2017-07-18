@@ -19,7 +19,7 @@ This App is mainly built for learning and practice, any contributions are very w
 
 ### Demo App
 
-<img src="./app/src/main/res/mipmap-xxhdpi/ic_launcher.png"/>
+<img src="./app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png"/>
 
 -  You can check it out already compiled at
 [Google Play](https://play.google.com/store/apps/details?id=me.chenyongrui.movism)

@@ -2,12 +2,15 @@
 
 A Material Designed Movie App
 
-based on MVP + Dagger2 + Retrofit + RxJava + OmniAdapter(by myself)
+based on MVP + Dagger2 + RxJava + Retrofit
+
+Powered by TMDb and OMDb
 
 
 ## About
 
-This App is mainly built for learning and practice, any contributions are very welcomed !
+This demo is built for design pattern and tech stack practice, any contributions are  welcomed !
+
 
 ### Main Features
 - Material Design UI +  Day/Night Theme Switch
@@ -37,16 +40,15 @@ This App is mainly built for learning and practice, any contributions are very w
 - [Butter Knife](https://github.com/JakeWharton/butterknife) for View Binding
 - [Glide](https://github.com/bumptech/glide) for images
 - [SuperRecyclerView](https://github.com/Malinskiy/SuperRecyclerView) for Refresh and Pull Load More
-- Powered by the [TMDb](https://www.themoviedb.org) and [OMDb](http://www.omdbapi.com)
-- Material Design Library from [Google](https://developer.android.google.cn/index.html)
+- Powered by [TMDb](https://www.themoviedb.org) and [OMDb](http://www.omdbapi.com)
 
 ## Screens
-<img src="./image/1.png" vspace="5" align= "left" width="200" height="320">
-<img src="./image/2.png" vspace="5" align= "left"  width="200"  height="320">
-<img src="./image/3.png"  vspace="5"    width="200"  height="320">
-<img src="./image/4.png" vspace="5" align= "left" width="200"  height="320">
-<img src="./image/5.png" vspace="5" align= "left" width="200"  height="320">
-<img src="./image/6.png" vspace="5"   width="200"  height="320">
+<img src="./image/1.png" vspace="5" align= "left" width="200" height="356">
+<img src="./image/2.png" vspace="5" align= "left"  width="200"  height="356">
+<img src="./image/3.png"  vspace="5"    width="200"  height="356">
+<img src="./image/4.png" vspace="5" align= "left" width="200"  height="356">
+<img src="./image/5.png" vspace="5" align= "left" width="200"  height="356">
+<img src="./image/6.png" vspace="5"   width="200"  height="356">
 
 
 

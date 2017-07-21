@@ -20,9 +20,9 @@ This demo is built for design pattern and tech stack practice, any contributions
 
 ### Software Architecture
 - Based on MVP pattern, Every View(Activity/Fragment) has its presenter, which is defined in the Contract interface.
-- Use Dagger2 to inject everything: view, presenter, service, repository, even adapter!
-- Create a generic adapter, remain only one adapter, every layout define and bind in the ViewHolder, therefore cut out a lot of redundant codes.
-- Utilize Retrofit make HTTP request to REST API and handle responses through RxJava Data Stream in a pretty flexible way.
+- Used Dagger2 to inject everything: view, presenter, service, repository, even adapter!
+- Created a generic adapter, remained only one adapter, every layout define and bind in the ViewHolder.
+- Utilized Retrofit make HTTP request to REST API and handled responses through RxJava Data Stream in a flexible way.
 - Read codes to know more !
 
 

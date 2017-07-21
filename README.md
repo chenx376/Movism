@@ -1,10 +1,8 @@
 # Movism
 
-A Material Designed Movie App
+A Material Designed Movie App based on MVP + Dagger2 + RxJava + Retrofit
 
-based on MVP + Dagger2 + RxJava + Retrofit
-
-Powered by TMDb and OMDb
+Powered by [TMDb](https://www.themoviedb.org) and [OMDb](http://www.omdbapi.com)
 
 
 ## About
@@ -13,21 +11,29 @@ This demo is built for design pattern and tech stack practice, any contributions
 
 
 ### Main Features
-- Material Design UI +  Day/Night Theme Switch
+
+- Material Design UI + Day/Night Theme Switch
 - Beautiful dynamic color theme based on movie posters
 - Go through Movies in various categories, search movie by title
-- Review Movie details, cast, crew,  rating from major movie websites like IMDB
-- Similar Movie Recommendation
+- Review Movie detail, cast, crew,  rating from major movie websites like IMDB, Popcorn Times
+- Similar Movie Recommendation(provided by TMDb)
+
+### Software Architecture
+- Based on MVP pattern, Every View(Activity/Fragment) has its presenter, which is defined in the Contract interface. It also makes test easier.
+- Use Dagger2 to inject everything: view, presenter, service, repository, even adapter!
+- Create a generic adapter, remain only one adapter, every layout define and bind in the ViewHolder, therefore cut out a lot of redundant codes.
+- Utilize Retrofit make HTTP request to REST API and handle responses through RxJava Data Stream in a pretty flexible way.
+- Read codes to know more !
 
 
 ### Demo App
 
 <img src="./app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png"/>
 
--  You can check it out already compiled at
+-  You can check it out at
 [Google Play](https://play.google.com/store/apps/details?id=me.chenyongrui.movism)
-- You can clone the project and compile it yourself, however you need to
- provide your own API keys in your local machine
+- Or You can clone the project and compile it yourself, however you need to
+ provide your own TMDb/OMDb API keys in your local machine(refer to the gradle function in the app folder)
 
 
 ## Thanks
@@ -40,16 +46,11 @@ This demo is built for design pattern and tech stack practice, any contributions
 - [Butter Knife](https://github.com/JakeWharton/butterknife) for View Binding
 - [Glide](https://github.com/bumptech/glide) for images
 - [SuperRecyclerView](https://github.com/Malinskiy/SuperRecyclerView) for Refresh and Pull Load More
-- Powered by [TMDb](https://www.themoviedb.org) and [OMDb](http://www.omdbapi.com)
+
 
 ## Screens
-<img src="./image/1.png" vspace="5" align= "left" width="200" height="356">
-<img src="./image/2.png" vspace="5" align= "left"  width="200"  height="356">
-<img src="./image/3.png"  vspace="5"    width="200"  height="356">
-<img src="./image/4.png" vspace="5" align= "left" width="200"  height="356">
-<img src="./image/5.png" vspace="5" align= "left" width="200"  height="356">
-<img src="./image/6.png" vspace="5"   width="200"  height="356">
 
+<img src="./image/screens.png" width="660" height="760"/>
 
 
 ## License

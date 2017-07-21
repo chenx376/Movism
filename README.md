@@ -30,7 +30,7 @@ This demo is built for design pattern and tech stack practice, any contributions
 
 <img src="./app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png"/>
 
--  You can check it out at
+-  You can check it out directly at
 [Google Play](https://play.google.com/store/apps/details?id=me.chenyongrui.movism)
 - Or You can clone the project and compile it yourself, however you need to
  provide your own TMDb/OMDb API keys in your local machine(refer to the gradle function in the app folder)
@@ -38,7 +38,6 @@ This demo is built for design pattern and tech stack practice, any contributions
 
 ## Thanks
 
-- MVP Design Pattern
 - [RxJava](https://github.com/ReactiveX/RxJava) for Async Networking
 - [Dagger2](https://github.com/google/dagger) for DI
 - [Retrofit](https://github.com/square/retrofit) for Restful
@@ -49,7 +48,7 @@ This demo is built for design pattern and tech stack practice, any contributions
 
 
 ## Screens
-
+<br/>
 <img src="./image/screens.png" width="660" height="760"/>
 
 
